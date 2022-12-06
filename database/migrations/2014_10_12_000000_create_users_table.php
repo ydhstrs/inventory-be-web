@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('nip');
             $table->string('no_hp');
+            $table->integer('status')->default('0');
             $table->integer('role')->default('0');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();

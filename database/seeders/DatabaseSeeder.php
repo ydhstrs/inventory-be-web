@@ -26,6 +26,7 @@ class DatabaseSeeder extends Seeder
             'nip' => '222012121111134',
             'no_hp' => '082134567890',
             'role' => '1',
+            'status'=>1,
             'password' => bcrypt('admin12345'),
         ]);
         User::create([
@@ -35,6 +36,7 @@ class DatabaseSeeder extends Seeder
             'nip' => '222012121111134',
             'no_hp' => '082134567890',
             'role' => '1',
+            'status'=>1,
             'password' => bcrypt('admin12345'),
         ]);
         User::create([
@@ -43,6 +45,7 @@ class DatabaseSeeder extends Seeder
             'nip' => '322012121111134',
             'no_hp' => '085334567890',
             'role' => '2',
+            'status'=>1,
             'password' => bcrypt('admin12345'),
         ]);
         User::create([
@@ -52,6 +55,7 @@ class DatabaseSeeder extends Seeder
             'nip' => '122012121111134',
             'no_hp' => '081234567890',
             'role' => '0',
+            'status'=>1,
             'password' => bcrypt('admin12345'),
         ]);
         User::create([
