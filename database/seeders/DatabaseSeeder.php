@@ -21,11 +21,21 @@ class DatabaseSeeder extends Seeder
 
         User::create([
             'name' => 'Admin',
+            'id_kota' => 1,
             'email' => 'admin@gmail.com',
             'nip' => '222012121111134',
             'no_hp' => '082134567890',
             'role' => '1',
-            'password' => bcrypt('admin12345'),
+            'password' => bcrypt('admin'),
+        ]);
+        User::create([
+            'name' => 'Admin2',
+            'id_kota' => 3,
+            'email' => 'admin2@gmail.com',
+            'nip' => '222012121111134',
+            'no_hp' => '082134567890',
+            'role' => '1',
+            'password' => bcrypt('admin'),
         ]);
         User::create([
             'name' => 'Superadmin',
@@ -33,15 +43,25 @@ class DatabaseSeeder extends Seeder
             'nip' => '322012121111134',
             'no_hp' => '085334567890',
             'role' => '2',
-            'password' => bcrypt('admin12345'),
+            'password' => bcrypt('admin'),
         ]);
         User::create([
             'name' => 'User',
+            'id_kota' => 1,
             'email' => 'user@gmail.com',
             'nip' => '122012121111134',
             'no_hp' => '081234567890',
             'role' => '0',
-            'password' => bcrypt('admin12345'),
+            'password' => bcrypt('admin'),
+        ]);
+        User::create([
+            'name' => 'User2',
+            'id_kota' => 3,
+            'email' => 'user2@gmail.com',
+            'nip' => '122012121111134',
+            'no_hp' => '081234567890',
+            'role' => '0',
+            'password' => bcrypt('admin'),
         ]);
         Kota::create([
             'id_zona' => 1,
@@ -53,12 +73,12 @@ class DatabaseSeeder extends Seeder
             'nama_kota' => 'Binjai',
             'kode_kota' => 'B1',
         ]);
-                Kota::create([
+        Kota::create([
             'id_zona' => 2,
             'nama_kota' => 'Tebing Tinggi',
             'kode_kota' => 'TB2',
         ]);
-                Kota::create([
+        Kota::create([
             'id_zona' => 2,
             'nama_kota' => 'Pematang Siantar',
             'kode_kota' => 'PS3',

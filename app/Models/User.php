@@ -17,21 +17,14 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-    ];
+    protected $fillable = ['name', 'email', 'password', 'role', 'id_kota', 'nip', 'no_hp'];
 
     /**
      * The attributes that should be hidden for serialization.
      *
      * @var array<int, string>
      */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
+    protected $hidden = ['password', 'remember_token'];
 
     /**
      * The attributes that should be cast.
@@ -42,7 +35,12 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-        public function isAdmin(){
-        return $this->role==2 || $this->role==1?true:false;
+    public function isAdmin()
+    {
+        return $this->role == 2 || $this->role == 1 ? true : false;
+    }
+    public function kota()
+    {
+        return $this->belongsTo(Kota::class, 'id_kota', 'id');
     }
 }
