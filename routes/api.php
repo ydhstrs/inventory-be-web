@@ -21,8 +21,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::group(['middleware'=>['auth:sanctum']],function(){
     Route::post('logout',[AuthController::class,'logout']);
-
+    
+    Route::get('zona', [\App\Http\Controllers\API\WilayahController::class, 'getZona']);
+    Route::get('kota', [\App\Http\Controllers\API\WilayahController::class, 'getKota']);
 });
 
 Route::post('register',[AuthController::class,'register']);
 Route::post('login',[AuthController::class,'login']);
+
