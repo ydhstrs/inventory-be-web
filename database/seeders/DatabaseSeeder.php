@@ -26,7 +26,7 @@ class DatabaseSeeder extends Seeder
             'nip' => '222012121111134',
             'no_hp' => '082134567890',
             'role' => '1',
-            'password' => bcrypt('admin'),
+            'password' => bcrypt('admin12345'),
         ]);
         User::create([
             'name' => 'Admin2',
@@ -35,7 +35,7 @@ class DatabaseSeeder extends Seeder
             'nip' => '222012121111134',
             'no_hp' => '082134567890',
             'role' => '1',
-            'password' => bcrypt('admin'),
+            'password' => bcrypt('admin12345'),
         ]);
         User::create([
             'name' => 'Superadmin',
@@ -43,7 +43,7 @@ class DatabaseSeeder extends Seeder
             'nip' => '322012121111134',
             'no_hp' => '085334567890',
             'role' => '2',
-            'password' => bcrypt('admin'),
+            'password' => bcrypt('admin12345'),
         ]);
         User::create([
             'name' => 'User',
@@ -52,7 +52,7 @@ class DatabaseSeeder extends Seeder
             'nip' => '122012121111134',
             'no_hp' => '081234567890',
             'role' => '0',
-            'password' => bcrypt('admin'),
+            'password' => bcrypt('admin12345'),
         ]);
         User::create([
             'name' => 'User2',
@@ -61,7 +61,7 @@ class DatabaseSeeder extends Seeder
             'nip' => '122012121111134',
             'no_hp' => '081234567890',
             'role' => '0',
-            'password' => bcrypt('admin'),
+            'password' => bcrypt('admin12345'),
         ]);
         Kota::create([
             'id_zona' => 1,
