@@ -33,6 +33,8 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'role'=>'integer',
+        'id_kota'=>'integer'
     ];
 
     public function isAdmin()
