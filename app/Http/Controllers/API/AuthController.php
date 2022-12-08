@@ -50,7 +50,7 @@ class AuthController extends Controller
         if (!Auth::attempt($request->only('email', 'password'))) {
             return ResponseFormatter::error("Unauthenticated", "Email atau password anda salah", 401);
         }
-        $user = User::where('email', $request->email)->firstOrFail();
+        $user = User::where('email', $request->email)->with('kota')->firstOrFail();
         if($user->status==0){
             return ResponseFormatter::error("Unauthenticated", "Akun anda belum diverifikasi oleh admin", 401);
         }
