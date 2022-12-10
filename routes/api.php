@@ -18,10 +18,10 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::get('inventaris', [\App\Http\Controllers\API\InventarisController::class, 'getInventaris']);
 
 Route::group(['middleware'=>['auth:sanctum']],function(){
     Route::post('logout',[AuthController::class,'logout']);
+    Route::get('inventaris', [\App\Http\Controllers\API\InventarisController::class, 'getInventaris']);
     
     Route::get('zona', [\App\Http\Controllers\API\WilayahController::class, 'getZona']);
     Route::get('kota', [\App\Http\Controllers\API\WilayahController::class, 'getKota']);
