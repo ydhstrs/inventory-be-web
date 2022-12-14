@@ -64,7 +64,7 @@
 
     <div class="w-full bg-secondaryColor h-80 flex flex-shrink-0 relative items-center">
         <img src="{{ asset('assets/background.png') }}" class="sm:w-screen w-screen h-80 opacity-40"
-            alt="Flowbite Logo" />
+            alt="Logo" />
         <span class="absolute center text-white sm:text-5xl text-2xl  font-bold  align-middle text-center w-full ">
             Aplikasi Pengelola Inventaris dan Logistik <br />
             BPBD Provinsi Sumatera Utara</span>

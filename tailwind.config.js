@@ -24,7 +24,8 @@ module.exports = {
             pinkColor:'#EC407A',
             softGreenColor:'#F0FAFA',
             greenColor:'#069697',
-            black:'#0000'
+            black:'#0000',
+            purple:'#C273FF',
         },
         colors:{
             primaryColor:'#FF6501',
@@ -35,7 +36,10 @@ module.exports = {
             pinkColor:'#EC407A',
             softGreenColor:'#F0FAFA',
             greenColor:'#069697',
-            black:'#0000'
+            black:'#0000',
+            purple:'#C273FF',
+            white:'#fff',
+            blue:'#5D5FEF',
         }
     },
 
