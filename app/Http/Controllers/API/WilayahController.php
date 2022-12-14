@@ -21,20 +21,16 @@ class WilayahController extends Controller
     {
         $zonas = Zona::select('id', 'nama_zona', 'kode_zona')->get();
 
-        return ResponseFormatter::success([
-          'zonas' => $zonas
-          
-        ], "Success Get Zona" );
+        return ResponseFormatter::success($zonas
+        , "Success Get Zona" );
         
     }
     public function getKota(Request $request)
     {
         $kotas = Kota::select('id','id_zona', 'nama_kota', 'kode_kota')->get();
 
-        return ResponseFormatter::success([
-          'kotas' => $kotas
-          
-        ], "Success Get Kota" );
+        return ResponseFormatter::success($kotas
+        , "Success Get Kota" );
         
     }
 

@@ -29,10 +29,7 @@ class InventarisController extends Controller
     }])
     ->get();
 
-        return ResponseFormatter::success([
-          'inventaris' => $inventaris
-          
-        ], "Success Get Inventaris" );
+        return ResponseFormatter::success($inventaris, "Success Get Inventaris" );
       }
       else{
         $inventaris = Inventaris::select('id','id_tipe','id_kota', 'nama_inv','jmlh_inv','foto_inv','keterangan_inv' )->where('id_kota', $request->id_kota)->with(['kota' => function ($query) {
@@ -42,10 +39,8 @@ class InventarisController extends Controller
     }])
     ->get();
 }
-        return ResponseFormatter::success([
-          'inventaris' => $inventaris
-          
-        ], "Success Get Inventaris By Kota" );
+        return ResponseFormatter::success($inventaris, "Success Get Inventaris By Kota" );
+
         
     }
     public function getInventarisbyKota(Request $request)
