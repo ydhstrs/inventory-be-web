@@ -61,7 +61,7 @@
 
         {{-- Statistik --}}
 
-        <span class="font-bold text-3xl sm:text-5xl mt-20">
+        <span class="font-bold text-3xl sm:text-5xl mt-20 text-center">
             Statistik Inventaris dan Logistik
         </span>
     </div>
