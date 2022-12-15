@@ -41,7 +41,9 @@
                             </button>
 
                             <div class="mt-5">
-                                Don't have a account? <span class="text-purple">Click Here</span>
+                                <a href="{{route('register')}}">
+                                    Don't have a account? <span class="text-purple">Click Here</span>
+                                </a>
                             </div>
                         </form>
                     </div>

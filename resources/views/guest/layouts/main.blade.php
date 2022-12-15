@@ -8,6 +8,8 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
+
+    <link rel="icon" href="icon_path" type="{{asset('assets/logo.png')}}">
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
     <!-- Scripts -->
@@ -39,19 +41,27 @@
                     <li class="bg-primaryColor p-2 rounded-lg">
                         <a href="#"
                             class="block py-2 pl-3 pr-4 text-white text-lg font-semibold rounded md:bg-transparent md:text-blue-700 md:p-0 "
-                            aria-current="page">Home</a>
+                            aria-current="page">Peralatan</a>
                     </li>
                     <li class="p-2">
                         <a href="#"
-                            class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 text-lg font-semibold">Services</a>
+                            class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 text-lg font-semibold">Logistik</a>
                     </li>
                     <li class="p-2">
                         <a href="#"
-                            class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 text-gray-400 text-lg font-semibold">Pricing</a>
+                            class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 text-gray-400 text-lg font-semibold">Distirbusi</a>
                     </li>
                     <li class="p-2">
                         <a href="#"
-                            class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0  text-lg font-semibold">Contact</a>
+                            class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0  text-lg font-semibold">Regulasi</a>
+                    </li>
+                    <li class="p-2">
+                        <a href="#"
+                            class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0  text-lg font-semibold">Gallery</a>
+                    </li>
+                    <li class="p-2">
+                        <a href="{{route('login')}}"
+                            class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0  text-lg font-semibold">Login</a>
                     </li>
                 </ul>
             </div>
