@@ -9,7 +9,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
 
-    <link rel="icon" href="icon_path" type="{{asset('assets/logo.png')}}">
+    <link rel="icon" type="image/icon type" href="{{asset('assets/logo.png')}}">
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
     <!-- Scripts -->
