@@ -64,5 +64,13 @@
         <span class="font-bold text-3xl sm:text-5xl mt-20 text-center">
             Statistik Inventaris dan Logistik
         </span>
+
+        <div class="container px-4 mx-auto">
+            <div class="p-6 m-20 bg-white rounded shadow">
+                {!! $chart->container() !!}
+            </div>
+        </div>
+
+  
     </div>
 @endsection
