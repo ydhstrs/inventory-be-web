@@ -31,9 +31,9 @@
             Statistik Inventaris dan Logistik
         </span>
 
-        <div class="flex flex-wrap mt-10 w-full justify-center">
+        <div class="flex flex-row mt-10 w-full justify-center">
             {{-- Left chart --}}
-            <div class="w-full sm:w-1/2 flex flex-col px-4 gap-2">
+            <div class="mx-auto sm:w-1/2 flex flex-col px-4 gap-2">
                 <div class="p-6 bg-white rounded shadow">
                     {!! $chart->container() !!}
                 </div>
