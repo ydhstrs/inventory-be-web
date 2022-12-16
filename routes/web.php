@@ -35,6 +35,7 @@ Route::middleware('auth','admin')->group(function () {
 
     Route::get('/peralatan', [AdminPeralatan::class, 'index'])->name('peralatan.index');
     Route::get('/addPeralatan', [AdminPeralatan::class, 'addView'])->name('peralatan.addView');
+    Route::get('/editPeralatan/{id}', [AdminPeralatan::class, 'editView'])->name('peralatan.editView');
     Route::post('/storePeralatan', [AdminPeralatan::class, 'store'])->name('peralatan.store');
 
 });
