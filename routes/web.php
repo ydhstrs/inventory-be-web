@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminDashboardController;
+use App\Http\Controllers\AdminLogistikController;
 use App\Http\Controllers\AdminPeralatan;
 use App\Http\Controllers\GuestController;
 use App\Http\Controllers\ProfileController;
@@ -43,6 +44,8 @@ Route::middleware('auth','admin')->group(function () {
     Route::post('/deletePeralatan/{id}', [AdminPeralatan::class, 'delete'])->name('peralatan.delete');
     Route::post('/updatePeralatan', [AdminPeralatan::class, 'update'])->name('peralatan.update');
 
+
+    Route::resource('/adminlogistik', AdminLogistikController::class);
 });
 
 require __DIR__.'/auth.php';
