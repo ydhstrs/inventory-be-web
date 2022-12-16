@@ -34,7 +34,7 @@ Route::middleware('auth','admin')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::get('/dashboard', [AdminPeralatan::class, 'index'])->name('dashboard');
+    Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
 
     Route::get('/peralatan', [AdminPeralatan::class, 'index'])->name('peralatan.index');
     Route::get('/addPeralatan', [AdminPeralatan::class, 'addView'])->name('peralatan.addView');
