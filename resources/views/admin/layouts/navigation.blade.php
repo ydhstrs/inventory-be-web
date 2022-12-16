@@ -12,7 +12,7 @@
 
                 <!-- Navigation Links -->
                 <div class="shrink-0 flex items-center font-bold text-white">
-                    <span>BPBD Provinsi Sumatera Utara</span>
+                    <span>BPBD {{Auth::user()->kota->nama_kota}}</span>
                 </div>
             </div>
 

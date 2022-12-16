@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\AdminPeralatan;
 use App\Http\Controllers\GuestController;
 use App\Http\Controllers\ProfileController;
@@ -32,11 +33,15 @@ Route::middleware('auth','admin')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
+    Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
 
     Route::get('/peralatan', [AdminPeralatan::class, 'index'])->name('peralatan.index');
     Route::get('/addPeralatan', [AdminPeralatan::class, 'addView'])->name('peralatan.addView');
     Route::get('/editPeralatan/{id}', [AdminPeralatan::class, 'editView'])->name('peralatan.editView');
+    Route::get('/detailPeralatan/{id}', [AdminPeralatan::class, 'detailView'])->name('peralatan.detailView');
     Route::post('/storePeralatan', [AdminPeralatan::class, 'store'])->name('peralatan.store');
+    Route::post('/deletePeralatan/{id}', [AdminPeralatan::class, 'delete'])->name('peralatan.delete');
+    Route::post('/updatePeralatan', [AdminPeralatan::class, 'update'])->name('peralatan.update');
 
 });
 
