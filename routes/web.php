@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminLogistikController;
 use App\Http\Controllers\AdminPeralatan;
 use App\Http\Controllers\GuestController;
 use App\Http\Controllers\ProfileController;
@@ -32,11 +33,13 @@ Route::middleware('auth','admin')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-
+ 
     Route::get('/peralatan', [AdminPeralatan::class, 'index'])->name('peralatan.index');
     Route::get('/addPeralatan', [AdminPeralatan::class, 'addView'])->name('peralatan.addView');
     Route::post('/storePeralatan', [AdminPeralatan::class, 'store'])->name('peralatan.store');
 
+
+    Route::resource('/logistik', AdminLogistikController::class);
 });
 
 require __DIR__.'/auth.php';
