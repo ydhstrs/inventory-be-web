@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Inventaris;
 use App\Models\Peralatan;
 use Illuminate\Http\Request;
@@ -20,7 +21,10 @@ class AdminPeralatan extends Controller
 
     public function addView()
     {
-        return view('admin.peralatan.create');
+        $kategories = Category::all();
+        return view('admin.peralatan.create',[
+            'kategories'=>$kategories
+        ]);
     }
 
     public function detailView($id)

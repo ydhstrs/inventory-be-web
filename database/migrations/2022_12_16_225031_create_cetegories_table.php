@@ -13,15 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('peralatans', function (Blueprint $table) {
+        Schema::create('categories', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_kota');
-            $table->string('nama');
-            $table->integer('jumlah')->nullable();
-            $table->string('foto')->nullable();
-            $table->string('kategori')->nullable();
-            $table->string('tahun')->nullable();
-            $table->string('keterangan')->nullable();
+            $table->string('nama_kategori');
             $table->timestamps();
         });
     }
@@ -33,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('peralatan');
+        Schema::dropIfExists('cetegories');
     }
 };

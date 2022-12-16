@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\AdminCategoryController;
 use App\Http\Controllers\AdminDashboardController;
+use App\Http\Controllers\AdminDistribusiController;
 use App\Http\Controllers\AdminLogistikController;
 use App\Http\Controllers\AdminPeralatan;
 use App\Http\Controllers\GuestController;
@@ -46,6 +48,13 @@ Route::middleware('auth','admin')->group(function () {
 
 
     Route::resource('/adminlogistik', AdminLogistikController::class);
+    Route::resource('/admindistribusi', AdminDistribusiController::class);
+
+    Route::get('/kategori', [AdminCategoryController::class, 'index'])->name('kategori.index');
+    Route::post('/kategori/{id}', [AdminCategoryController::class, 'delete'])->name('kategori.delete');
+    Route::post('/kategori', [AdminCategoryController::class, 'store'])->name('kategori.store');
+
+
 });
 
 require __DIR__.'/auth.php';

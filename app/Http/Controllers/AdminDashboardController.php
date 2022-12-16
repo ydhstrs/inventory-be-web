@@ -16,11 +16,13 @@ class AdminDashboardController extends Controller
     {
         $id_kota = Auth::user()->id_kota;
         $peralatan = Peralatan::count();
+        $logistik = Peralatan::count();
         return view('admin.dashboard', [
             'chart' => $chart->build($id_kota),
             'bpbdchart' => $BPBDChart->build(),
             'donutChart' => $donutChart->build(),
             'peralatan'=>$peralatan,
+            'logistik'=>$logistik,
     ]);
     }
 }

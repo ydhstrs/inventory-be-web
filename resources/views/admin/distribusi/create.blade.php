@@ -1,53 +1,51 @@
 <x-app-layout>
     <div class="m-10 bg-white p-10 rounded-lg">
-        <span class="font-bold text-4xl">Tambah Peralatan</span>
+        <span class="font-bold text-4xl">Tambah Logistik</span>
 
+        @php
+         $idKota = Auth::user()->id_kota;   
+        @endphp
         <div class="mt-10">
             <div class="block overflow-x-auto p-8 text-dark">
-                <form method="POST" action="{{ route('peralatan.store') }}" enctype="multipart/form-data">
+                <form method="POST" action="/adminlogistik" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-6">
-                        <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Nama</label>
-                        <input type="text" id="nama" name="nama"
+                        <input type="hidden" name="id_kota" value="{{$idKota}}">
+                        <label for="name"
+                            class="block mb-2 text-sm font-medium text-gray-900">Nama</label>
+                        <input type="text" id="nama_logistik" name="nama_logistik"
                             class="form-control bg-gray-50 border border-gray-300 text-dark text-sm rounded-lg block w-full p-2.5"
                             placeholder="" required>
                     </div>
                     <div class="mb-6">
-                        <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Jenis
-                            Peralatan</label>
-                        <select id="jenis_peralatan" name="kategori"
-                            class="bg-gray-50 border border-gray-300 text-dark text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
-                            <option selected>Pilih Jenis Peralatan</option>
-                            @foreach ($kategories as $kategori)
-                                <option value="{{$kategori->nama_kategori}}">{{$kategori->nama_kategori}}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="mb-6">
-                        <label for="jumlah" class="block mb-2 text-sm font-medium text-gray-900">Jumlah</label>
-                        <input type="number" id="jumlah" name="jumlah"
+                        <label for="jumlah"
+                            class="block mb-2 text-sm font-medium text-gray-900">Jumlah</label>
+                        <input type="number" id="jumlah_logistik" name="jumlah_logistik"
                             class="form-control bg-gray-50 border border-gray-300 text-dark text-sm rounded-lg block w-full p-2.5"
                             placeholder="" required>
                     </div>
 
 
                     <div class="mb-6">
-                        <label for="filefoto" class="block mb-2 text-sm font-medium text-gray-900">Foto</label>
+                        <label for="filefoto"
+                            class="block mb-2 text-sm font-medium text-gray-900">Foto</label>
                         <input type="file" id="filefoto" name="filefoto"
                             class="form-control bg-gray-50 border border-gray-300 text-dark text-sm rounded-lg block w-full p-2.5"
-                            placeholder="" required>
+                            placeholder="">
                     </div>
 
                     <div class="mb-6">
-                        <label for="tahun" class="block mb-2 text-sm font-medium text-gray-900">Tahun</label>
-                        <input type="date" id="tahun" name="tahun"
+                        <label for="tahun"
+                            class="block mb-2 text-sm font-medium text-gray-900">Tahun</label>
+                        <input type="date" id="tahun_logistik" name="tahun_logistik"
                             class="form-control bg-gray-50 border border-gray-300 text-dark text-sm rounded-lg block w-full p-2.5"
                             placeholder="" required>
                     </div>
 
                     <div class="mb-6">
-                        <label for="keterangan" class="block mb-2 text-sm font-medium text-gray-900">Keterangan</label>
-                        <textarea type="text" id="keterangan" name="keterangan"
+                        <label for="keterangan"
+                            class="block mb-2 text-sm font-medium text-gray-900">Keterangan</label>
+                        <textarea type="text" id="keterangan_logistik" name="keterangan_logistik"
                             class="form-control bg-gray-50 border border-gray-300 text-dark text-sm rounded-lg block w-full p-2.5"
                             placeholder="" required></textarea>
                     </div>
