@@ -35,4 +35,10 @@ class AdminPeralatan extends Controller
         return redirect()->route('peralatan.index')->with('success', 'Data berhasil ditambah');
     }
 
+    public function editView($id){
+        $id_kota = Auth::user()->id_kota;
+        $peralatans = Peralatan::where(['id_kota'=>$id_kota,'id'=>$id])->get();
+        return view('admin.peralatan.index',['peralatans'=>$peralatans]);
+    }
+
 }

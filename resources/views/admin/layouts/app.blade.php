@@ -95,7 +95,7 @@
             </aside>
 
             <div class="h-screen overflow-y-scroll w-full pb-10 bg-grey">
-                
+
                 @include('alert')
 
                 {{ $slot }}
@@ -107,3 +107,4 @@
 </body>
 
 </html>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
