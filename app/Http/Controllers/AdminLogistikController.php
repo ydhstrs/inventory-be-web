@@ -6,6 +6,7 @@ use App\Models\Logistik;
 use App\Http\Requests\StoreLogistikRequest;
 use App\Http\Requests\UpdateLogistikRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 
 class AdminLogistikController extends Controller
@@ -29,7 +30,8 @@ class AdminLogistikController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.logistik.create');
+    
     }
 
     /**
@@ -38,9 +40,24 @@ class AdminLogistikController extends Controller
      * @param  \App\Http\Requests\StoreLogistikRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreLogistikRequest $request)
+    public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'id_kota' => 'required|max:11',
+            'nama_logistik' => 'required|max:255',
+            'foto_logistik' => 'image|file|max:1024',
+            'tahun_logistik' => '',
+            'jumlah_logistik' => 'required|max:11',
+            'keterangan_logistik' =>'max:255'
+        ]);
+
+        if ($request->file('foto_logistik')) {
+            $validatedData['foto_logistik'] = $request->file('foto_logistik')->store('logistik');
+        }
+
+        Logistik::create($validatedData);
+
+        return redirect('/adminlogistik')->with('success', 'Data Telah Ditambahkan');
     }
 
     /**

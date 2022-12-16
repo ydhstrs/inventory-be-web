@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('nama_logistik');
             $table->integer('jumlah_logistik')->nullable();
             $table->string('foto_logistik')->nullable();
-            $table->string('tahun_logistik')->nullable();
+            $table->date('tahun_logistik')->nullable();
             $table->string('keterangan_logistik')->nullable();
             $table->timestamps();
         });

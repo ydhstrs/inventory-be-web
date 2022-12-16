@@ -40,7 +40,7 @@ Route::middleware('auth','admin')->group(function () {
     Route::post('/storePeralatan', [AdminPeralatan::class, 'store'])->name('peralatan.store');
 
 
-    Route::resource('/logistik', AdminLogistikController::class);
+    Route::resource('/adminlogistik', AdminLogistikController::class);
 });
 
 require __DIR__.'/auth.php';
