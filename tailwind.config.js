@@ -26,6 +26,7 @@ module.exports = {
             greenColor: '#069697',
             black: '#0000',
             purple: '#C273FF',
+            grey: '#F1F6F5',
         },
         colors: {
             primaryColor: '#FF6501',
@@ -40,6 +41,7 @@ module.exports = {
             purple: '#C273FF',
             white: '#fff',
             blue: '#5D5FEF',
+            grey: '#F1F6F5',
         }
     },
 

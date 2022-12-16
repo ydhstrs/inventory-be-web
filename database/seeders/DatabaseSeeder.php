@@ -172,11 +172,13 @@ class DatabaseSeeder extends Seeder
             'keterangan_inv' => 'Ambulan Urgent Binjai',
         ]);
         Tipe_Inventaris::create([
-            'nama_tipe' => 'Elektronik',
+            'id' => 1,
+            'nama_tipe' => 'Peralatan',
             'keterangan_tipe' => 'Mencakup Barang-Barang Elektronik',
         ]);
         Tipe_Inventaris::create([
-            'nama_tipe' => 'Mobil',
+            'id' => 2,
+            'nama_tipe' => 'Logistik',
             'keterangan_tipe' => 'Mencakup Ambulan, Mobil Dinas Dll',
         ]);
     }
