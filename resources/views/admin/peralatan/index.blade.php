@@ -4,7 +4,7 @@
 
         <div class="mt-10">
 
-            <a href="{{ route('peralatan.addView') }}" class="text-lg p-4 rounded bg-blue text-white rounded-2xl ">Tambah
+            <a href="{{ route('peralatan.addView') }}" class="text-lg p-4 bg-blue-600 text-white rounded-2xl ">Tambah
                 Peralatan</a>
             <div class="overflow-x-auto relative mt-5">
                 <div class="flex flex-col">

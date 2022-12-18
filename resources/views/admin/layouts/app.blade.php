@@ -23,7 +23,7 @@
         <div class="flex flex-row">
 
             <aside class="w-64" aria-label="Sidebar">
-                <div class="overflow-y-auto py-4 px-3 bg-gray-50   bg-indigoColor h-screen drop-shadow-md">
+                <div class="overflow-y-auto py-4 px-3  bg-indigoColor h-screen drop-shadow-md">
                     <ul class="space-y-2">
                         <li>
                             <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
@@ -38,7 +38,7 @@
                             </x-nav-link>
                         </li>
                         <li>
-                            <x-nav-link href="{{route('peralatan.index')}}" :active="request()->routeIs('peralatan.index')">
+                            <x-nav-link href="{{ route('peralatan.index') }}" :active="request()->routeIs('peralatan.index')">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                     stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -48,7 +48,7 @@
                             </x-nav-link>
                         </li>
                         <li>
-                            <x-nav-link href="{{route('adminlogistik.index')}}" :active="request()->routeIs('adminlogistik.index')">
+                            <x-nav-link href="{{ route('adminlogistik.index') }}" :active="request()->routeIs('adminlogistik.index')">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                     stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -58,16 +58,18 @@
                             </x-nav-link>
                         </li>
                         <li>
-                            <x-nav-link href="{{route('admindistribusi.index')}}" :active="request()->routeIs('admindistribusi.index')">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
-                                  </svg>
-                                  
+                            <x-nav-link href="{{ route('admindistribusi.index') }}" :active="request()->routeIs('admindistribusi.index')">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
+                                </svg>
+
                                 <span class="flex-1 ml-3 whitespace-nowrap">Distribusi</span>
                             </x-nav-link>
                         </li>
                         <li>
-                            <x-nav-link href="#" :active="request()->routeIs('')">
+                            <x-nav-link href="{{ route('users.index') }}" :active="request()->routeIs('')">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                     stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -78,13 +80,27 @@
                             </x-nav-link>
                         </li>
                         <li>
-                            <x-nav-link href="{{route('kategori.index')}}" :active="request()->routeIs('kategori.index')">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9.568 3H5.25A2.25 2.25 0 003 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 005.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 009.568 3z" />
+                            <x-nav-link href="{{ route('kategori.index') }}" :active="request()->routeIs('kategori.index')">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M9.568 3H5.25A2.25 2.25 0 003 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 005.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 009.568 3z" />
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M6 6h.008v.008H6V6z" />
-                                  </svg>
-                                  
-                                <span class="flex-1 ml-3 whitespace-nowrap">Kategori</span>
+                                </svg>
+
+                                <span class="flex-1 ml-3 whitespace-nowrap">Kategori Peralatan</span>
+                            </x-nav-link>
+                        </li>
+                        <li>
+                            <x-nav-link href="{{ route('kategoril.index') }}" :active="request()->routeIs('kategoril.index')">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M9.568 3H5.25A2.25 2.25 0 003 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 005.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 009.568 3z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 6h.008v.008H6V6z" />
+                                </svg>
+
+                                <span class="flex-1 ml-3 whitespace-nowrap">Kategori Logistik</span>
                             </x-nav-link>
                         </li>
                         <li>

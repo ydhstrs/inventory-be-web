@@ -13,6 +13,7 @@ class Logistik extends Model
         'nama_logistik',
         'foto_logistik',
         'tahun_logistik',
+        'kategori_logistik',
         'jumlah_logistik',
         'keterangan_logistik',
     ];
