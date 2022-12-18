@@ -21,4 +21,8 @@ class Peralatan extends Model
     public function kondisiBarang(){
         return $this->belongsTo(Kondisi::class,'id','id_barang');
     }
+
+    public function kota(){
+        return $this->belongsTo(Kota::class,'id_kota','id');
+    }
 }
