@@ -21,7 +21,14 @@ class AdminLogistikController extends Controller
     public function index()
     {
         $id_kota = Auth::user()->id_kota;
+        $logistiks = [];
+        if (Auth::user()->role==2){
+        $logistiks = Logistik::all();
+        }
+        else{
         $logistiks = Logistik::where('id_kota', $id_kota)->get();
+    }
+        
         return view('admin.logistik.index', ['logistiks' => $logistiks]);
     }
 

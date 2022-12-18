@@ -1,10 +1,12 @@
 <x-app-layout>
     <div class=" flex flex-col items-center mt-10">
       
+        @if (Auth::user()->id_kota != NULL)
         <span class="font-bold text-3xl sm:text-5xl text-center">
             Statistik Inventaris dan Logistik <br> {{Auth::user()->kota->nama_kota}}
         </span>
-
+        @else
+        @endif
         <div class="mt-10 flex flex-wrap mx-auto justify-center gap-10">
             {{-- Card 1 --}}
             <div class="card bg-softIndigoColor p-5 shadow-lg flex flex-col rounded-lg pr-40 pb-20 max-w-sm">
