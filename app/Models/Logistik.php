@@ -17,4 +17,8 @@ class Logistik extends Model
         'jumlah_logistik',
         'keterangan_logistik',
     ];
+
+    public function kota(){
+        return $this->belongsTo(Kota::class,'id_kota','id');
+    }
 }
