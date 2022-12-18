@@ -1,11 +1,34 @@
 <x-app-layout>
-    <div class="m-10 bg-white p-10 rounded-lg">
+    @php
+        $user = Auth::user();
+        $user->id_kota;
+        Auth::setUser($user);
+    @endphp
+    <div class=" m-10 bg-white p-10 rounded-lg">
         <span class="font-bold text-4xl">Logistik</span>
 
-        <div class="mt-10">
+        <div class="flex flex-wrap mt-10">
 
-            <a href="adminlogistik/create" class="text-lg p-4 rounded-2xl bg-blue-600 text-white">Tambah
+            <a href="adminlogistik/create" class=" p-2 px-4 rounded-lg bg-blue-600 text-white flex gap-2 place-items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                Tambah
                 Logistik</a>
+            <form method="get" action="{{ route('export.logistik', $user->id_kota) }}">
+                <button type="submit"
+                    class="bg-green-900 text-white py-2 px-6 mx-4 hover:opacity-75 rounded-lg flex gap-2 place-items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
+                    </svg>
+                    Export</button>
+
+            </form>
+        </div>
             <div class="overflow-x-auto relative mt-5">
                 <div class="flex flex-col">
                     <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -91,11 +114,11 @@
                                                         </svg>
 
                                                     </a>
-                                                    <form action="adminlogistik/{{ $logistik->id }}"
-                                                        method="post">
-                                                         @method('delete')
+                                                    <form action="adminlogistik/{{ $logistik->id }}" method="post">
+                                                        @method('delete')
                                                         @csrf
-                                                        <button type="submit" onclick="return confirm('Apakah Kamu Yakin Ingin Menghapus?') " >
+                                                        <button type="submit"
+                                                            onclick="return confirm('Apakah Kamu Yakin Ingin Menghapus?') ">
                                                             <svg class="w-10 h-10 bg-pinkColor p-2 rounded text-white"
                                                                 xmlns="http://www.w3.org/2000/svg" fill="none"
                                                                 viewBox="0 0 24 24" stroke-width="1.5"
@@ -119,5 +142,4 @@
             </div>
 
         </div>
-    </div>
 </x-app-layout>

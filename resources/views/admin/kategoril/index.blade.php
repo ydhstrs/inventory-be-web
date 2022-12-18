@@ -1,13 +1,18 @@
 <x-app-layout>
     <div class="m-10 bg-white p-10 rounded-lg">
-        <span class="font-bold text-4xl">Kategori</span>
+        <span class="font-bold text-4xl">Kategori Logistik</span>
 
         <div class="mt-10">
 
-            <button class="text-lg p-4 bg-blue-600 text-white rounded-2xl " type="button"
-                onclick="toggleModal('modal-id',0,0)">
-                Tambah Kategori
-            </button>
+            <button onclick="toggleModal('modal-id',0,0)"
+                class=" p-2 px-4 rounded-lg bg-blue-600 text-white flex gap-2 place-items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                Tambah
+                Kategori</button>
             <div class="overflow-x-auto relative mt-5">
                 <div class="flex flex-col">
                     <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">

@@ -1,13 +1,18 @@
 <x-app-layout>
     <div class="m-10 bg-white p-10 rounded-lg">
-        <span class="font-bold text-4xl">Kategori</span>
+        <span class="font-bold text-4xl">Kategori Peralatan</span>
 
         <div class="mt-10">
 
-            <button class="text-lg p-4 bg-blue-600 text-white rounded-2xl " type="button"
-                onclick="toggleModal('modal-id',0,0)">
-                Tambah Kategori
-            </button>
+            <button onclick="toggleModal('modal-id',0,0)"
+                class=" p-2 px-4 rounded-lg bg-blue-600 text-white flex gap-2 place-items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                Tambah
+                Kategori</button>
             <div class="overflow-x-auto relative mt-5">
                 <div class="flex flex-col">
                     <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -33,32 +38,32 @@
                                     </thead>
                                     <tbody>
                                         @foreach ($kategoris as $kategori)
-                                        <tr class="border-b ">
-                                            <td
-                                                class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                                                {{ $loop->iteration }}
-                                            </td>
-                                            <td
-                                                class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                {{ $kategori->nama_kategori }}
-                                            </td>
-                                            <td>
-                                                <form action="{{ route('kategori.delete', $kategori->id) }}"
-                                                    method="POST">
-                                                    @csrf
-                                                    <button type="submit">
-                                                        <svg class="w-10 h-10 bg-pinkColor p-2 rounded text-white"
-                                                            xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                            viewBox="0 0 24 24" stroke-width="1.5"
-                                                            stroke="currentColor" class="w-6 h-6">
-                                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                                d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                                        </svg>
+                                            <tr class="border-b ">
+                                                <td
+                                                    class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                                                    {{ $loop->iteration }}
+                                                </td>
+                                                <td
+                                                    class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                                    {{ $kategori->nama_kategori }}
+                                                </td>
+                                                <td>
+                                                    <form action="{{ route('kategori.delete', $kategori->id) }}"
+                                                        method="POST">
+                                                        @csrf
+                                                        <button type="submit">
+                                                            <svg class="w-10 h-10 bg-pinkColor p-2 rounded text-white"
+                                                                xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                                viewBox="0 0 24 24" stroke-width="1.5"
+                                                                stroke="currentColor" class="w-6 h-6">
+                                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                                    d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                            </svg>
 
-                                                    </button>
-                                                </form>
-                                            </td>
-                                        </tr>
+                                                        </button>
+                                                    </form>
+                                                </td>
+                                            </tr>
                                         @endforeach
                                     </tbody>
                                 </table>
@@ -93,7 +98,7 @@
                 </div>
                 {{-- body --}}
                 <div class="block overflow-x-auto p-8 text-dark">
-                    <form method="POST" action="{{route('kategori.store')}}" >
+                    <form method="POST" action="{{ route('kategori.store') }}">
                         @csrf
                         <div class="mb-6">
                             <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Nama</label>
