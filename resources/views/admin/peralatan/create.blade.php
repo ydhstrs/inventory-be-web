@@ -13,11 +13,12 @@
                             placeholder="" required>
                     </div>
                     <div class="mb-6">
-                        <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Jenis
-                            Peralatan</label>
+                        <label for="name" class="block mb-2 text-sm font-medium text-gray-900">
+                            Kategori Peralatan
+                        </label>
                         <select id="jenis_peralatan" name="kategori"
                             class="bg-gray-50 border border-gray-300 text-dark text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
-                            <option selected>Pilih Jenis Peralatan</option>
+                            <option selected>Pilih Kategori Peralatan</option>
                             @foreach ($kategories as $kategori)
                                 <option value="{{$kategori->nama_kategori}}">{{$kategori->nama_kategori}}</option>
                             @endforeach
@@ -31,6 +32,48 @@
                     </div>
 
 
+
+                    <div class="mb-6">
+                        <label for="kondisi" class="block mb-2 text-sm font-medium text-gray-900">
+                           Kondisi
+                        </label>
+                        <div class="flex flex-row gap-4">
+                            <div>
+                                <label for="kondisi" class="block mb-2 text-sm font-medium text-gray-900">
+                                    Baik
+                                 </label>
+                                <input type="number" id="" name="baik" value="0"
+                                class="form-control bg-gray-50 border border-gray-300 text-dark text-sm rounded-lg block w-full p-2.5"
+                                placeholder="" required>
+                            </div>
+                            <div>
+                                <label for="kondisi" class="block mb-2 text-sm font-medium text-gray-900">
+                                    Rusak Ringan
+                                 </label>
+                                <input type="number" id="" name="rusak_ringan" value="0"
+                                class="form-control bg-gray-50 border border-gray-300 text-dark text-sm rounded-lg block w-full p-2.5"
+                                placeholder="" required>
+                            </div>
+                            <div>
+                                <label for="kondisi" class="block mb-2 text-sm font-medium text-gray-900">
+                                    Rusak Sedang
+                                 </label>
+                                <input type="number" id="" name="rusak_sedang" value="0"
+                                class="form-control bg-gray-50 border border-gray-300 text-dark text-sm rounded-lg block w-full p-2.5"
+                                placeholder="" required>
+                            </div>
+                            <div>
+                                <label for="kondisi" class="block mb-2 text-sm font-medium text-gray-900">
+                                    Rusak Berat
+                                 </label>
+                                <input type="number" id="" name="rusak_berat" value="0"
+                                class="form-control bg-gray-50 border border-gray-300 text-dark text-sm rounded-lg block w-full p-2.5"
+                                placeholder="" required>
+                            </div>
+                        </div>
+               
+                    </div>
+
                     <div class="mb-6">
                         <label for="filefoto" class="block mb-2 text-sm font-medium text-gray-900">Foto</label>
                         <input type="file" id="filefoto" name="filefoto"
@@ -39,7 +82,9 @@
                     </div>
 
                     <div class="mb-6">
-                        <label for="tahun" class="block mb-2 text-sm font-medium text-gray-900">Tahun</label>
+                        <label for="tahun" class="block mb-2 text-sm font-medium text-gray-900">
+                            Tahun Perolehan BNPB
+                        </label>
                         <input type="date" id="tahun" name="tahun"
                             class="form-control bg-gray-50 border border-gray-300 text-dark text-sm rounded-lg block w-full p-2.5"
                             placeholder="" required>

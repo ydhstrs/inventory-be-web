@@ -12,6 +12,18 @@
 
                     <div class="p-10 flex flex-col items-center justify-center">
 
+                        @if ($errors->any())
+                            <div id="alert"
+                                class="alert mx-10 alert bg-softPinkColor rounded-lg py-5 px-6 mb-4 text-base text-pinkColor"
+                                role="alert">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+
                         <form method="POST" action="{{ route('login') }}">
                             @csrf
 
@@ -23,7 +35,6 @@
                                 <x-input-label for="email" :value="__('Email')" />
                                 <input id="email" class="block mt-1 w-full" type="email" name="email"
                                     :value="old('email')" required autofocus />
-                                <x-input-error :messages="$errors->get('email')" class="mt-2" />
                             </div>
 
                             <!-- Password -->
@@ -32,8 +43,6 @@
 
                                 <input id="password" class="block mt-1 w-full" type="password" name="password" required
                                     autocomplete="current-password" />
-
-                                <x-input-error :messages="$errors->get('password')" class="mt-2" />
                             </div>
 
                             <button class="bg-blue w-full justify-center text-xl text-white p-3 rounded-3xl">
@@ -41,7 +50,7 @@
                             </button>
 
                             <div class="mt-5">
-                                <a href="{{route('register')}}">
+                                <a href="{{ route('register') }}">
                                     Don't have a account? <span class="text-purple">Click Here</span>
                                 </a>
                             </div>
@@ -54,8 +63,8 @@
 
     </div>
     <div class="card w-screen flex  justify-center  absolute bottom-0 left-0">
-        <div class="bg-white p-8 rounded-tr-3xl rounded-tl-3xl w-3/4 flex flex-row justify-center">
-
+        <div class="bg-white p-8 rounded-tr-3xl rounded-tl-3xl w-3/4 flex flex-row gap-4 justify-center">
+            <img src="{{ asset('assets/logo_pemprovsu.png') }}" class="h-6 mr-3 sm:h-12" alt="Logo" />
             <img src="{{ asset('assets/logo.png') }}" class="h-6 mr-3 sm:h-12" alt="Logo" />
         </div>
     </div>

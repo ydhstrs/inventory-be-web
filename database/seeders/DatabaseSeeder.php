@@ -190,5 +190,8 @@ class DatabaseSeeder extends Seeder
         Category::create([
             'nama_kategori' => 'Alat Sedang',
         ]);
+        Category::create([
+            'nama_kategori'=>'Kendaraan'
+        ]);
     }
 }
