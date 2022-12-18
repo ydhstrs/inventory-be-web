@@ -11,9 +11,16 @@
                 </div>
 
                 <!-- Navigation Links -->
+                @if (Auth::user()->role==2)
+                <div class="shrink-0 flex items-center font-bold text-white">
+                    <span>BPBD Provinsi Sumatera Utara</span>
+                </div>
+                @else
                 <div class="shrink-0 flex items-center font-bold text-white">
                     <span>BPBD {{Auth::user()->kota->nama_kota}}</span>
                 </div>
+                @endif
+           
             </div>
 
             <!-- Settings Dropdown -->

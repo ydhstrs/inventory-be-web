@@ -1,9 +1,16 @@
 <x-app-layout>
     <div class=" flex flex-col items-center mt-10">
       
+        @if (Auth::user()->role==2)
+        <span class="font-bold text-3xl sm:text-5xl text-center">
+            Statistik Inventaris dan Logistik Provinsi Sumatera Utara
+        </span>     
+        @else
         <span class="font-bold text-3xl sm:text-5xl text-center">
             Statistik Inventaris dan Logistik <br> {{Auth::user()->kota->nama_kota}}
-        </span>
+        </span>            
+        @endif
+
 
         <div class="mt-10 flex flex-wrap mx-auto justify-center gap-10">
             {{-- Card 1 --}}

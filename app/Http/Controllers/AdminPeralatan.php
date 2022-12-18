@@ -15,8 +15,14 @@ class AdminPeralatan extends Controller
 
     public function index()
     {
-        $id_kota = Auth::user()->id_kota;
-        $peralatans = Peralatan::where('id_kota', $id_kota)->get();
+        $peralatans = [];
+        if (Auth::user()->role == 2) {
+            $peralatans = Peralatan::all();
+        } else {
+
+            $id_kota = Auth::user()->id_kota;
+            $peralatans = Peralatan::where('id_kota', $id_kota)->get();
+        }
         return view('admin.peralatan.index', ['peralatans' => $peralatans]);
     }
 
