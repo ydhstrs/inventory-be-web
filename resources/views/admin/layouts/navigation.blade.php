@@ -11,7 +11,6 @@
                 </div>
 
                 <!-- Navigation Links -->
-<<<<<<< HEAD
                 @if (Auth::user()->role==2)
                 <div class="shrink-0 flex items-center font-bold text-white">
                     <span>BPBD Provinsi Sumatera Utara</span>
@@ -22,17 +21,6 @@
                 </div>
                 @endif
            
-=======
-                @if (Auth::user()->id_kota == NULL)
-                    <div class="shrink-0 flex items-center font-bold text-white">
-                        <span>BPBD Provinsi</span>
-                    </div>
-                @else
-                    <div class="shrink-0 flex items-center font-bold text-white">
-                        <span>BPBD {{ Auth::user()->kota->nama_kota }}</span>
-                    </div>
-                @endif
->>>>>>> e806b01f330fa484eea155b0cd70346530321471
             </div>
 
             <!-- Settings Dropdown -->

@@ -15,7 +15,6 @@ class AdminPeralatan extends Controller
 
     public function index()
     {
-<<<<<<< HEAD
         $peralatans = [];
         if (Auth::user()->role == 2) {
             $peralatans = Peralatan::all();
@@ -24,16 +23,6 @@ class AdminPeralatan extends Controller
             $id_kota = Auth::user()->id_kota;
             $peralatans = Peralatan::where('id_kota', $id_kota)->get();
         }
-=======
-        $id_kota = Auth::user()->id_kota;
-        $peralatans = [];
-        if (Auth::user()->role==2){
-        $peralatans = Peralatan::all();
-        }
-        else{
-        $peralatans = Peralatan::where('id_kota', $id_kota)->get();
-    }
->>>>>>> e806b01f330fa484eea155b0cd70346530321471
         return view('admin.peralatan.index', ['peralatans' => $peralatans]);
     }
 

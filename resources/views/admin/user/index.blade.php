@@ -74,7 +74,7 @@
                                                     @endif
                                                 </td>
 
-                                                <td class="flex flex-row gap-1 p-4 align-items: center">
+                                                <td class="flex flex-row gap-2 p-4 align-items: center">
                                                     {{-- Role Action --}}
                                                     @if ($logistik->status == 0)
                                                         <form action="{{ route('user.addToVerif', $logistik->id) }}"
@@ -82,9 +82,11 @@
                                                             @csrf
                                                             @method('POST')
                                                             <button
-                                                                class="bg-green-400 p-1 rounded-md hover:shadow-xl hover:bg-green-500">
-                                                                <span class="text-sm">+Verifikasi </span>
-
+                                                                class="bg-green-400 p-1 rounded-md hover:shadow-xl hover:bg-green-500 font-bold">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                                                                  </svg>
+                                                                  
                                                             </button>
                                                         </form>
                                                     @else
@@ -93,8 +95,11 @@
                                                             @csrf
                                                             @method('POST')
                                                             <button
-                                                                class="bg-yellow-300 p-1 rounded-md hover:shadow-xl hover:bg-yellow-400">
-                                                                <span class="text-sm">-Verifikasi </span>
+                                                                class="bg-yellow-300 p-1 rounded-md hover:shadow-xl hover:bg-yellow-400 font-bold">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                                                                  </svg>
+                                                                  
                                                             </button>
                                                         </form>
                                                     @endif
