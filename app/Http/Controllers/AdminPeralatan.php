@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Inventaris;
+use App\Models\Kondisi;
 use App\Models\Peralatan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -22,8 +23,8 @@ class AdminPeralatan extends Controller
     public function addView()
     {
         $kategories = Category::all();
-        return view('admin.peralatan.create',[
-            'kategories'=>$kategories
+        return view('admin.peralatan.create', [
+            'kategories' => $kategories
         ]);
     }
 
@@ -31,7 +32,7 @@ class AdminPeralatan extends Controller
     {
         $id_kota = Auth::user()->id_kota;
         $peralatan = Peralatan::where(['id_kota' => $id_kota, 'id' => $id])->first();
-        return view('admin.peralatan.show',['peralatan'=>$peralatan]);
+        return view('admin.peralatan.show', ['peralatan' => $peralatan]);
     }
 
     public function store(Request $request)
@@ -45,7 +46,15 @@ class AdminPeralatan extends Controller
         }
 
         $request['id_kota'] = Auth::user()->id_kota;
-        Peralatan::create($request->all());
+
+        $peralatan =  Peralatan::create($request->all());
+        Kondisi::create([
+            'id_barang' => $peralatan->id,
+            'baik' => $request['baik'],
+            'rusak_ringan' => $request['rusak_ringan'],
+            'rusak_sedang' => $request['rusak_sedang'],
+            'rusak_berat' => $request['rusak_berat'],
+        ]);
         return redirect()->route('peralatan.index')->with('success', 'Data berhasil ditambah');
     }
 
@@ -53,7 +62,9 @@ class AdminPeralatan extends Controller
     {
         $id_kota = Auth::user()->id_kota;
         $peralatan = Peralatan::where(['id_kota' => $id_kota, 'id' => $id])->first();
-        return view('admin.peralatan.edit', ['peralatan' => $peralatan]);
+
+        $kategories = Category::all();
+        return view('admin.peralatan.edit', ['peralatan' => $peralatan, 'kategories' => $kategories]);
     }
 
     public function update(Request $request)
@@ -67,7 +78,20 @@ class AdminPeralatan extends Controller
         }
 
 
-        Peralatan::where(['id' => $request['id']])->update($request->except('_token'));
+        Peralatan::where(['id' => $request['id']])->update($request->except(
+            '_token',
+            'baik',
+            'rusak_ringan',
+            'rusak_sedang',
+            'rusak_berat',
+        ));
+
+        Kondisi::where('id_barang', $request['id'])->update([
+            'baik' => $request['baik'],
+            'rusak_ringan' => $request['rusak_ringan'],
+            'rusak_sedang' => $request['rusak_sedang'],
+            'rusak_berat' => $request['rusak_berat'],
+        ]);
 
         return redirect()->route('peralatan.index')->with('success', 'Data berhasil diupdate');
     }

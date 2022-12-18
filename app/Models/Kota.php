@@ -15,10 +15,11 @@ class Kota extends Model
     ];
 
     protected $casts = [
-        'id_zona'=>'integer',
+        'id_zona' => 'integer',
     ];
 
-        public function zona(){
-        return $this->belongsTo(Zona::class, 'id_zona','id');
+    public function zona()
+    {
+        return $this->belongsTo(Zona::class, 'id_zona', 'id');
     }
 }

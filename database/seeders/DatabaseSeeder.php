@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\Category;
 use Illuminate\Database\Seeder;
 use App\Models\User;
 use App\Models\Kota;
@@ -180,6 +182,11 @@ class DatabaseSeeder extends Seeder
             'id' => 2,
             'nama_tipe' => 'Logistik',
             'keterangan_tipe' => 'Mencakup Ambulan, Mobil Dinas Dll',
+        ]);
+
+        Category::create([
+            'id'=>1,
+            'nama_kategori'=>'kendaraan'
         ]);
     }
 }

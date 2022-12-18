@@ -17,4 +17,8 @@ class Peralatan extends Model
         'kategori',
         'keterangan',
     ];
+
+    public function kondisiBarang(){
+        return $this->belongsTo(Kondisi::class,'id','id_barang');
+    }
 }

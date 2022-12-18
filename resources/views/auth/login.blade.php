@@ -54,8 +54,8 @@
 
     </div>
     <div class="card w-screen flex  justify-center  absolute bottom-0 left-0">
-        <div class="bg-white p-8 rounded-tr-3xl rounded-tl-3xl w-3/4 flex flex-row justify-center">
-
+        <div class="bg-white p-8 rounded-tr-3xl rounded-tl-3xl w-3/4 flex flex-row gap-4 justify-center">
+            <img src="{{ asset('assets/logo_pemprovsu.png') }}" class="h-6 mr-3 sm:h-12" alt="Logo" />
             <img src="{{ asset('assets/logo.png') }}" class="h-6 mr-3 sm:h-12" alt="Logo" />
         </div>
     </div>

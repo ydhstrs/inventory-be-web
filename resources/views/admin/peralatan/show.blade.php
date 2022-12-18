@@ -15,10 +15,61 @@
                         placeholder="{{ $peralatan->nama }}" required>
                 </div>
                 <div class="mb-6">
+                    <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Kategori
+                        Peralatan</label>
+                    <input type="text" disabled id="nama" name="nama" value="{{ $peralatan->kategori }}"
+                        class="form-control bg-gray-50 border border-gray-300 text-dark text-sm rounded-lg block w-full p-2.5"
+                        placeholder="{{ $peralatan->kategori }}" required>
+                </div>
+                <div class="mb-6">
                     <label for="jumlah" class="block mb-2 text-sm font-medium text-gray-900">Jumlah</label>
                     <input type="number" disabled id="jumlah" name="jumlah" value="{{ $peralatan->jumlah }}"
                         class="form-control bg-gray-50 border border-gray-300 text-dark text-sm rounded-lg block w-full p-2.5"
                         placeholder="{{ $peralatan->jumlah }}" required>
+                </div>
+
+
+                <div class="mb-6">
+                    <label for="kondisi" class="block mb-2 text-sm font-medium text-gray-900">
+                        Kondisi
+                    </label>
+                    <div class="flex flex-row gap-4">
+                        <div>
+                            <label for="kondisi" class="block mb-2 text-sm font-medium text-gray-900">
+                                Baik
+                            </label>
+                            <input type="number" id="" name="baik"
+                                value=" {{ $peralatan->kondisiBarang->baik }}" disabled
+                                class="form-control bg-gray-50 border border-gray-300 text-dark text-sm rounded-lg block w-full p-2.5"
+                                placeholder=" {{ $peralatan->kondisiBarang->baik }}" required>
+                        </div>
+                        <div>
+                            <label for="kondisi" class="block mb-2 text-sm font-medium text-gray-900">
+                                Rusak Ringan
+                            </label>
+                            <input type="number" id="" name="rusak_ringan"
+                                value=" {{ $peralatan->kondisiBarang->rusak_ringan }}" disabled
+                                class="form-control bg-gray-50 border border-gray-300 text-dark text-sm rounded-lg block w-full p-2.5"
+                                placeholder=" {{ $peralatan->kondisiBarang->rusak_ringan }}" required>
+                        </div>
+                        <div>
+                            <label for="kondisi" class="block mb-2 text-sm font-medium text-gray-900">
+                                Rusak Sedang
+                            </label>
+                            <input type="number" id="" name="rusak_sedang" value=" {{$peralatan->kondisiBarang->rusak_sedang}}" disabled
+                                class="form-control bg-gray-50 border border-gray-300 text-dark text-sm rounded-lg block w-full p-2.5"
+                                placeholder=" {{$peralatan->kondisiBarang->rusak_sedang}}" required>
+                        </div>
+                        <div>
+                            <label for="kondisi" class="block mb-2 text-sm font-medium text-gray-900">
+                                Rusak Berat
+                            </label>
+                            <input type="number" id="" name="rusak_berat" value=" {{$peralatan->kondisiBarang->rusak_berat}}" disabled
+                                class="form-control bg-gray-50 border border-gray-300 text-dark text-sm rounded-lg block w-full p-2.5"
+                                placeholder=" {{$peralatan->kondisiBarang->rusak_berat}}" required>
+                        </div>
+                    </div>
+
                 </div>
 
 
@@ -30,7 +81,7 @@
                 </div>
 
                 <div class="mb-6">
-                    <label for="tahun" class="block mb-2 text-sm font-medium text-gray-900">Tahun</label>
+                    <label for="tahun" class="block mb-2 text-sm font-medium text-gray-900">Tahun Perolehan BNPB</label>
                     <input type="date" disabled id="tahun" name="tahun" value="{{ $peralatan->tahun }}"
                         class="form-control bg-gray-50 border border-gray-300 text-dark text-sm rounded-lg block w-full p-2.5"
                         placeholder="{{ $peralatan->tahun }}" required>
