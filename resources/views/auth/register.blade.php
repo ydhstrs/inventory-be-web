@@ -1,7 +1,7 @@
 <x-guest-layout>
-    <div class="w-screen h-screen bg-primaryColor flex flex-col items-center justify-center">
+    <div class="w-screen h-screen bg-primaryColor flex flex-col items-center justify-center overflow-y-scroll">
 
-        <div class="card bg-white shadow-lg rounded-xl">
+        <div class="card bg-white shadow-lg rounded-xl my-4">
             <div class="flex flex-wrap items-center gap-10">
                 <img src="{{ asset('assets/login.png') }}" class="h-full hidden" alt="Logo" />
 
@@ -90,7 +90,7 @@
                                 <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
                             </div>
 
-                            <button class="bg-blue w-full justify-center text-xl text-white p-3 rounded-3xl">
+                            <button class="bg-indigoColor w-full justify-center text-xl text-white p-3 rounded-3xl">
                                 {{ __('Register') }}
                             </button>
 
@@ -102,11 +102,5 @@
             </div>
         </div>
 
-    </div>
-    <div class="card w-screen flex  justify-center  absolute bottom-0 left-0">
-        <div class="bg-white p-8 rounded-tr-3xl rounded-tl-3xl w-3/4 flex flex-row justify-center">
-
-            <img src="{{ asset('assets/logo.png') }}" class="h-6 mr-3 sm:h-12" alt="Logo" />
-        </div>
     </div>
 </x-guest-layout>

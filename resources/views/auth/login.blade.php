@@ -45,7 +45,7 @@
                                     autocomplete="current-password" />
                             </div>
 
-                            <button class="bg-blue w-full justify-center text-xl text-white p-3 rounded-3xl">
+                            <button class="bg-indigoColor w-full justify-center text-xl text-white p-3 rounded-3xl">
                                 {{ __('Log in') }}
                             </button>
 
