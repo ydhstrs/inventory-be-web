@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('id_kota');
             $table->string('nama_logistik');
+            $table->string('kategori_logistik');
             $table->integer('jumlah_logistik')->nullable();
             $table->string('foto_logistik')->nullable();
             $table->date('tahun_logistik')->nullable();

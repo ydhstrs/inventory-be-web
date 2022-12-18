@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminCategoryController;
+use App\Http\Controllers\AdminKategorilController;
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\AdminDistribusiController;
 use App\Http\Controllers\AdminLogistikController;
@@ -54,6 +55,15 @@ Route::middleware('auth','admin')->group(function () {
     Route::post('/kategori/{id}', [AdminCategoryController::class, 'delete'])->name('kategori.delete');
     Route::post('/kategori', [AdminCategoryController::class, 'store'])->name('kategori.store');
 
+    Route::get('/kategoril', [AdminKategorilController::class, 'index'])->name('kategoril.index');
+    Route::post('/kategoril/{id}', [AdminKategorilController::class, 'delete'])->name('kategoril.delete');
+    Route::post('/kategoril', [AdminKategorilController::class, 'store'])->name('kategoril.store');
+
+        //verif user
+    Route::get('users', [\App\Http\Controllers\UserController::class, 'index'])->name('users.index');
+    Route::post('/user/addToVerif/{id}', [App\Http\Controllers\UserController::class, 'addToVerif'])->name('user.addToVerif');
+    Route::post('/user/delToVerif/{id}', [App\Http\Controllers\UserController::class, 'delToVerif'])->name('user.delToVerif');
+    Route::post('/user/deleteUser/{id}', [App\Http\Controllers\UserController::class, 'deleteUser'])->name('user.delUser');
 
 });
 

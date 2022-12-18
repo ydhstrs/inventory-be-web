@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Logistik;
 use App\Http\Requests\StoreLogistikRequest;
 use App\Http\Requests\UpdateLogistikRequest;
+use App\Models\KategoriL;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 
 class AdminLogistikController extends Controller
@@ -19,8 +21,15 @@ class AdminLogistikController extends Controller
     public function index()
     {
         $id_kota = Auth::user()->id_kota;
-        $logistiks = Logistik::where('id_kota',$id_kota)->get();
-        return view('admin.logistik.index',['logistiks'=>$logistiks]);
+        $logistiks = [];
+        if (Auth::user()->role==2){
+        $logistiks = Logistik::all();
+        }
+        else{
+        $logistiks = Logistik::where('id_kota', $id_kota)->get();
+    }
+        
+        return view('admin.logistik.index', ['logistiks' => $logistiks]);
     }
 
     /**
@@ -30,8 +39,11 @@ class AdminLogistikController extends Controller
      */
     public function create()
     {
-        return view('admin.logistik.create');
-    
+        $kategories = KategoriL::all();
+
+        return view('admin.logistik.create', [
+            'kategories' => $kategories,
+        ]);
     }
 
     /**
@@ -47,8 +59,9 @@ class AdminLogistikController extends Controller
             'nama_logistik' => 'required|max:255',
             'foto_logistik' => 'image|file|max:1024',
             'tahun_logistik' => '',
+            'kategori_logistik' => 'required|max:255',
             'jumlah_logistik' => 'required|max:11',
-            'keterangan_logistik' =>'max:255'
+            'keterangan_logistik' => 'max:255',
         ]);
 
         if ($request->file('foto_logistik')) {
@@ -66,9 +79,10 @@ class AdminLogistikController extends Controller
      * @param  \App\Models\Logistik  $logistik
      * @return \Illuminate\Http\Response
      */
-    public function show(Logistik $logistik)
+    public function show(Logistik $adminlogistik)
     {
-        //
+        $id_kota = Auth::user()->id_kota;
+        return view('admin.logistik.show', ['logistik' => $adminlogistik]);
     }
 
     /**
@@ -77,9 +91,12 @@ class AdminLogistikController extends Controller
      * @param  \App\Models\Logistik  $logistik
      * @return \Illuminate\Http\Response
      */
-    public function edit(Logistik $logistik)
+    public function edit(Logistik $adminlogistik)
     {
-        //
+        $kategories = KategoriL::all();
+        return view('admin.logistik.edit', ['logistik' => $adminlogistik,
+    'kategories' => $kategories
+    ]);
     }
 
     /**
@@ -100,8 +117,14 @@ class AdminLogistikController extends Controller
      * @param  \App\Models\Logistik  $logistik
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Logistik $logistik)
+    public function destroy(Logistik $adminlogistik)
     {
-        //
+        if ($adminlogistik->foto_logistik) {
+            Storage::delete($adminlogistik->foto_logistik);
+        }
+        Logistik::destroy($adminlogistik->id);
+
+        return redirect('/adminlogistik')->with('success', 'Data Telah Dihapus');
     }
+
 }

@@ -1,11 +1,9 @@
 <x-app-layout>
     <div class="m-10 bg-white p-10 rounded-lg">
-        <span class="font-bold text-4xl">Peralatan</span>
+        <span class="font-bold text-4xl">Veifikasi Akun</span>
 
         <div class="mt-10">
 
-            <a href="{{ route('peralatan.addView') }}" class="text-lg p-4 bg-blue-600 text-white rounded-2xl ">Tambah
-                Peralatan</a>
             <div class="overflow-x-auto relative mt-5">
                 <div class="flex flex-col">
                     <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -24,19 +22,19 @@
                                             </th>
                                             <th scope="col"
                                                 class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                                                Kategori
+                                                NIP
                                             </th>
                                             <th scope="col"
                                                 class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                                                Foto
+                                                Email
                                             </th>
                                             <th scope="col"
                                                 class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                                                Jumlah
+                                                Kota / Kab
                                             </th>
                                             <th scope="col"
                                                 class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                                                Tahun Perolehan BNPB
+                                                Status
                                             </th>
                                             <th scope="col"
                                                 class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
@@ -45,7 +43,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($peralatans as $peralatan)
+                                        @foreach ($users as $logistik)
                                             <tr class="border-b-2 ">
                                                 <td
                                                     class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
@@ -53,54 +51,66 @@
                                                 </td>
                                                 <td
                                                     class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                    {{ $peralatan->nama }}
+                                                    {{ $logistik->name }}
                                                 </td>
                                                 <td
                                                     class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                    {{ $peralatan->kategori }}
+                                                    {{ $logistik->nip }}
                                                 </td>
                                                 <td
                                                     class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                    <img src="{{ $peralatan->foto }}" class="w-20 h-20" />
+                                                    {{ $logistik->email }}
                                                 </td>
                                                 <td
                                                     class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                    {{ $peralatan->jumlah }}
+                                                    {{ $logistik->kota->nama_kota }}
                                                 </td>
                                                 <td
                                                     class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                    {{ $peralatan->tahun }}
+                                                    @if ($logistik->status == 1)
+                                                        Terverfikasi
+                                                    @else
+                                                        Pending
+                                                    @endif
                                                 </td>
-                                                <td
-                                                    class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap flex gap-2">
-                                                    <a href="{{ route('peralatan.editView', $peralatan->id) }}">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                            viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                                                            class="w-10 h-10 bg-primaryColor p-2 rounded text-white">
-                                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                                d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
-                                                        </svg>
-                                                    </a>
-                                                    <a href="{{ route('peralatan.detailView', $peralatan->id) }}">
-                                                        <svg class="w-10 h-10 bg-greenColor p-2 rounded text-white"
-                                                            xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                            viewBox="0 0 24 24" stroke-width="1.5"
-                                                            stroke="currentColor">
-                                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                                d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m5.231 13.481L15 17.25m-4.5-15H5.625c-.621 0-1.125.504-1.125 1.125v16.5c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9zm3.75 11.625a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" />
-                                                        </svg>
 
-                                                    </a>
-                                                    <form action="{{ route('peralatan.delete', $peralatan->id) }}"
+                                                <td class="flex flex-row gap-1 p-4 align-items: center">
+                                                    {{-- Role Action --}}
+                                                    @if ($logistik->status == 0)
+                                                        <form action="{{ route('user.addToVerif', $logistik->id) }}"
+                                                            method="POST">
+                                                            @csrf
+                                                            @method('POST')
+                                                            <button
+                                                                class="bg-green-400 p-1 rounded-md hover:shadow-xl hover:bg-green-500">
+                                                                <span class="text-sm">+Verifikasi </span>
+
+                                                            </button>
+                                                        </form>
+                                                    @else
+                                                        <form action="{{ route('user.delToVerif', $logistik->id) }}"
+                                                            method="POST">
+                                                            @csrf
+                                                            @method('POST')
+                                                            <button
+                                                                class="bg-yellow-300 p-1 rounded-md hover:shadow-xl hover:bg-yellow-400">
+                                                                <span class="text-sm">-Verifikasi </span>
+                                                            </button>
+                                                        </form>
+                                                    @endif
+
+                                                    {{-- Hapus User --}}
+                                                    <form action="{{ route('user.delUser', $logistik->id) }}"
                                                         method="POST">
                                                         @csrf
-                                                        <button type="submit">
-                                                            <svg class="w-10 h-10 bg-pinkColor p-2 rounded text-white"
-                                                                xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                        @method('POST')
+                                                        <button class="bg-red-500 p-1 rounded-md hover:shadow-xl"
+                                                            onclick="return confirm('Apakah Kamu Yakin Ingin Menghapus?') ">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                                                                 viewBox="0 0 24 24" stroke-width="1.5"
-                                                                stroke="currentColor" class="w-6 h-6">
+                                                                stroke="currentColor" class="w-6 h-6 text-white">
                                                                 <path stroke-linecap="round" stroke-linejoin="round"
-                                                                    d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                                    d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
                                                             </svg>
 
                                                         </button>

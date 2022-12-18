@@ -32,7 +32,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($kategoris as $kategori)
+                                        @foreach ($kategorils as $kategoril)
                                         <tr class="border-b ">
                                             <td
                                                 class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
@@ -40,10 +40,10 @@
                                             </td>
                                             <td
                                                 class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                {{ $kategori->nama_kategori }}
+                                                {{ $kategoril->nama_kategoril }}
                                             </td>
                                             <td>
-                                                <form action="{{ route('kategori.delete', $kategori->id) }}"
+                                                <form action="{{ route('kategori.delete', $kategoril->id) }}"
                                                     method="POST">
                                                     @csrf
                                                     <button type="submit">
@@ -93,11 +93,11 @@
                 </div>
                 {{-- body --}}
                 <div class="block overflow-x-auto p-8 text-dark">
-                    <form method="POST" action="{{route('kategori.store')}}" >
+                    <form method="POST" action="{{route('kategoril.store')}}" >
                         @csrf
                         <div class="mb-6">
                             <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Nama</label>
-                            <input type="text" id="nama" name="nama_kategori"
+                            <input type="text" id="nama" name="nama_kategoril"
                                 class="form-control bg-gray-50 border border-gray-300 text-dark text-sm rounded-lg block w-full p-2.5"
                                 placeholder="Nama" required>
                         </div>

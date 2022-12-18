@@ -5,10 +5,10 @@
         <div class="mt-10">
 
             <div class="flex flex-row gap-2">
-                <a href="" class="text-lg p-4 rounded bg-blue text-white rounded-2xl ">
+                <a href="" class="text-lg p-4 bg-blue-600 text-white rounded-2xl ">
                     Distribusi Peralatan
                 </a>
-                <a href="" class="text-lg p-4 rounded bg-blue text-white rounded-2xl ">
+                <a href="" class="text-lg p-4 bg-blue-600 text-white rounded-2xl ">
                     Distribusi Logistik
                 </a>
             </div>

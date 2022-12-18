@@ -10,6 +10,7 @@ use App\Models\User;
 use App\Models\Kota;
 use App\Models\Zona;
 use App\Models\Inventaris;
+use App\Models\KategoriL;
 use App\Models\Tipe_Inventaris;
 
 class DatabaseSeeder extends Seeder
@@ -183,10 +184,14 @@ class DatabaseSeeder extends Seeder
             'nama_tipe' => 'Logistik',
             'keterangan_tipe' => 'Mencakup Ambulan, Mobil Dinas Dll',
         ]);
-
+        KategoriL::create([
+            'nama_kategoril' => 'Makanan',
+        ]);
         Category::create([
-            'id'=>1,
-            'nama_kategori'=>'kendaraan'
+            'nama_kategori' => 'Alat Sedang',
+        ]);
+        Category::create([
+            'nama_kategori'=>'Kendaraan'
         ]);
     }
 }
