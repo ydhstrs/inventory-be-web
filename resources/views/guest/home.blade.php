@@ -1,5 +1,4 @@
 @extends('guest.layouts.main')
-
 @section('container')
     <div class="w-screen flex flex-col items-center mt-10">
         <span class="font-bold text-3xl sm:text-5xl">Per Tahun 2022</span>
@@ -102,12 +101,10 @@
 
 
     </div>
+    <script src="{{ $chart->cdn() }}"></script>
+    {{ $chart->script() }}
+    <script src="{{ $bpbdchart->cdn() }}"></script>
+    {{ $bpbdchart->script() }}
+    <script src="{{ $donutChart->cdn() }}"></script>
+    {{ $donutChart->script() }}
 @endsection
-
-<script src="{{ $chart->cdn() }}"></script>
-{{ $chart->script() }}
-<script src="{{ $bpbdchart->cdn() }}"></script>
-{{ $bpbdchart->script() }}
-<script src="{{ $donutChart->cdn() }}"></script>
-{{ $donutChart->script() }}
-
