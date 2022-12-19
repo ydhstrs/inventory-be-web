@@ -68,7 +68,7 @@ class InventarisController extends Controller
 
             return ResponseFormatter::success($inventaris, "Success Get Logistik");
         }else{
-            $inventaris = Peralatan::all();
+            $inventaris = Logistik::all();
 
         return ResponseFormatter::success($inventaris, "Success Get Logistik");
         }
