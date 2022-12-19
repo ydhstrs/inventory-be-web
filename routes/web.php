@@ -73,6 +73,10 @@ Route::middleware('auth','admin')->group(function () {
     Route::post('/user/delToVerif/{id}', [App\Http\Controllers\UserController::class, 'delToVerif'])->name('user.delToVerif');
     Route::post('/user/deleteUser/{id}', [App\Http\Controllers\UserController::class, 'deleteUser'])->name('user.delUser');
 
+    
+    Route::get('/logistik/export/', [AdminLogistikController::class, 'export'])->name('export.logistik');
+    Route::get('/peralatan/export/', [AdminPeralatan::class, 'export'])->name('export.peralatan');
+
 });
 
 require __DIR__.'/auth.php';

@@ -3,13 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\Logistik;
+use App\Models\Kota;
 use App\Http\Requests\StoreLogistikRequest;
 use App\Http\Requests\UpdateLogistikRequest;
 use App\Models\KategoriL;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-
+use App\Exports\LogistikExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class AdminLogistikController extends Controller
 {
@@ -22,13 +24,12 @@ class AdminLogistikController extends Controller
     {
         $id_kota = Auth::user()->id_kota;
         $logistiks = [];
-        if (Auth::user()->role==2){
-        $logistiks = Logistik::all();
+        if (Auth::user()->role == 2) {
+            $logistiks = Logistik::all();
+        } else {
+            $logistiks = Logistik::where('id_kota', $id_kota)->get();
         }
-        else{
-        $logistiks = Logistik::where('id_kota', $id_kota)->get();
-    }
-        
+
         return view('admin.logistik.index', ['logistiks' => $logistiks]);
     }
 
@@ -98,9 +99,7 @@ class AdminLogistikController extends Controller
     public function edit(Logistik $adminlogistik)
     {
         $kategories = KategoriL::all();
-        return view('admin.logistik.edit', ['logistik' => $adminlogistik,
-    'kategories' => $kategories
-    ]);
+        return view('admin.logistik.edit', ['logistik' => $adminlogistik, 'kategories' => $kategories]);
     }
 
     /**
@@ -130,5 +129,10 @@ class AdminLogistikController extends Controller
 
         return redirect('/adminlogistik')->with('success', 'Data Telah Dihapus');
     }
-
+    public function export(Request $request)
+    {
+        $myId = Auth::user()->id_kota;
+        $namaKota = Kota::where('id',  $myId)->get('nama_kota');
+        return Excel::download(new LogistikExport($myId, $namaKota), 'logistik.xlsx');
+    }
 }
