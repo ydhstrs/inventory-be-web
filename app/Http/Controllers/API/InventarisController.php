@@ -9,6 +9,8 @@ use App\Services\ImageService;
 use Illuminate\Http\Request;
 use App\Helpers\ResponseFormatter;
 use App\Models\Inventaris;
+use App\Models\Logistik;
+use App\Models\Peralatan;
 
 //Controller Untuk Get Data Kota dan Zona
 class InventarisController extends Controller
@@ -40,8 +42,35 @@ class InventarisController extends Controller
         }
         return ResponseFormatter::success($inventaris, "Success Get Inventaris By Kota");
     }
-    
-    public function getInventarisbyKota(Request $request)
+
+    public function getPeralatan(Request $request)
     {
+        if ($request['id_kota'] == null) {
+
+            $inventaris = Peralatan::where('id_kota', $request['id_kota'])
+                ->get();
+
+            return ResponseFormatter::success($inventaris, "Success Get Peralatan");
+        }else{
+            $inventaris = Peralatan::all();
+
+        return ResponseFormatter::success($inventaris, "Success Get Peralatan");
+        }
+    }
+
+
+    public function getLogistik(Request $request)
+    {
+        if ($request['id_kota'] == null) {
+
+            $inventaris = Logistik::where('id_kota', $request['id_kota'])
+                ->get();
+
+            return ResponseFormatter::success($inventaris, "Success Get Logistik");
+        }else{
+            $inventaris = Peralatan::all();
+
+        return ResponseFormatter::success($inventaris, "Success Get Logistik");
+        }
     }
 }

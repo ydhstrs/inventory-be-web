@@ -23,6 +23,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::group(['middleware'=>['auth:sanctum']],function(){
     Route::post('logout',[AuthController::class,'logout']);
     Route::get('inventaris', [\App\Http\Controllers\API\InventarisController::class, 'getInventaris']);
+    Route::get('logistiks', [\App\Http\Controllers\API\InventarisController::class, 'getLogistik']);
+    Route::get('peralatan', [\App\Http\Controllers\API\InventarisController::class, 'getPeralatan']);
     
     Route::get('zona', [\App\Http\Controllers\API\WilayahController::class, 'getZona']);
     Route::get('kota', [\App\Http\Controllers\API\WilayahController::class, 'getKota']);
