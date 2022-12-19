@@ -45,7 +45,7 @@ class InventarisController extends Controller
 
     public function getPeralatan(Request $request)
     {
-        if ($request['id_kota'] == null) {
+        if ($request['id_kota'] != null) {
 
             $inventaris = Peralatan::where('id_kota', $request['id_kota'])
                 ->get();
@@ -61,7 +61,7 @@ class InventarisController extends Controller
 
     public function getLogistik(Request $request)
     {
-        if ($request['id_kota'] == null) {
+        if ($request['id_kota'] != null) {
 
             $inventaris = Logistik::where('id_kota', $request['id_kota'])
                 ->get();
