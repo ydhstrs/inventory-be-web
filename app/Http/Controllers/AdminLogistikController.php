@@ -57,18 +57,22 @@ class AdminLogistikController extends Controller
         $validatedData = $request->validate([
             'id_kota' => 'required|max:11',
             'nama_logistik' => 'required|max:255',
-            'foto_logistik' => 'image|file|max:1024',
+            'fotologistik' => 'image|file|max:1024',
             'tahun_logistik' => '',
             'kategori_logistik' => 'required|max:255',
             'jumlah_logistik' => 'required|max:11',
             'keterangan_logistik' => 'max:255',
         ]);
 
-        if ($request->file('foto_logistik')) {
-            $validatedData['foto_logistik'] = $request->file('foto_logistik')->store('logistik');
+
+        if ($request->file('fotologistik') != null) {
+            $ttd = $request->file('fotologistik')->store("peralatan");
+            $image = asset('storage/' . $ttd);
+
+            $request['foto_logistik'] = $image;
         }
 
-        Logistik::create($validatedData);
+        Logistik::create($request->all());
 
         return redirect('/adminlogistik')->with('success', 'Data Telah Ditambahkan');
     }

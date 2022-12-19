@@ -65,7 +65,7 @@
                                                 </td>
                                                 <td
                                                     class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                    <img src="{{ asset('assets/banner.png') }}" class="w-20 h-20" />
+                                                    <img src="{{$logistik->foto_logistik  }}" class="w-20 h-20" />
                                                 </td>
                                                 <td
                                                     class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">

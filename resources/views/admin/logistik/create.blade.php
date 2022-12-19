@@ -36,8 +36,8 @@
 
 
                     <div class="mb-6">
-                        <label for="filefoto" class="block mb-2 text-sm font-medium text-gray-900">Foto</label>
-                        <input type="file" id="filefoto" name="filefoto"
+                        <label for="fotologistik" class="block mb-2 text-sm font-medium text-gray-900">Foto</label>
+                        <input type="file" id="fotologistik" name="fotologistik"
                             class="form-control bg-gray-50 border border-gray-300 text-dark text-sm rounded-lg block w-full p-2.5"
                             placeholder="">
                     </div>

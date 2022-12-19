@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Distribusi;
+use App\Models\DistribusiItem;
+use App\Models\Logistik;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-class AdminDistribusiController extends Controller
+class AdminDistribusiItemController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,30 +15,9 @@ class AdminDistribusiController extends Controller
      */
     public function index()
     {
-        $distribubsi = Distribusi::all();
-        return view('admin.distribusi.index',[
-            'distribusi'=>$distribubsi
-        ]);
+        //
     }
 
-    public function draft()
-    {
-        $distribubsi = Distribusi::create([
-            'status' => 'draft',
-        ]);
-    
-       return redirect()->route('distribusi.draftView',$distribubsi->id);
-    }
-
-    public function draftView($id){
-
-        $distribubsi = Distribusi::where('id',$id)->first();
-
-        return view('admin.distribusi.action.create', [
-            'distribusi' => $distribubsi,
-        ]);
-
-    }
     /**
      * Show the form for creating a new resource.
      *
@@ -46,7 +25,16 @@ class AdminDistribusiController extends Controller
      */
     public function create()
     {
-        //
+    }
+
+    public function createView($id){
+
+        $logistik = Logistik::all();
+
+        return view('admin.distribusi.actionItem.create',[
+            "logistiks"=>$logistik,
+            'idDistribusi'=>$id
+        ]);
     }
 
     /**
@@ -57,7 +45,13 @@ class AdminDistribusiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        DistribusiItem::create([
+            'id_distribusi'=>$request['idDistribusi'],
+            'id_logistik'=>$request['id_logistik'],
+            'jumlah'=>$request['jumlah'],
+        ]);
+
+        return redirect()->route('distribusi.draftView',$request['idDistribusi']);
     }
 
     /**

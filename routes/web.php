@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminCategoryController;
 use App\Http\Controllers\AdminKategorilController;
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\AdminDistribusiController;
+use App\Http\Controllers\AdminDistribusiItemController;
 use App\Http\Controllers\AdminLogistikController;
 use App\Http\Controllers\AdminPeralatan;
 use App\Http\Controllers\GuestController;
@@ -49,8 +50,15 @@ Route::middleware('auth','admin')->group(function () {
 
 
     Route::resource('/adminlogistik', AdminLogistikController::class);
+    
     Route::resource('/admindistribusi', AdminDistribusiController::class);
+    Route::resource('/admindistribusiItem', AdminDistribusiItemController::class);
+    Route::get('/admindistribusiItemView/{id}', [AdminDistribusiItemController::class, 'createView'])->name('distribusiItem.createView');
+ 
 
+    Route::get('/admindistribusiDraft', [AdminDistribusiController::class, 'draft'])->name('distribusi.draft');
+    Route::get('/admindistribusiDraftView/{id}', [AdminDistribusiController::class, 'draftView'])->name('distribusi.draftView');
+ 
     Route::get('/kategori', [AdminCategoryController::class, 'index'])->name('kategori.index');
     Route::post('/kategori/{id}', [AdminCategoryController::class, 'delete'])->name('kategori.delete');
     Route::post('/kategori', [AdminCategoryController::class, 'store'])->name('kategori.store');
