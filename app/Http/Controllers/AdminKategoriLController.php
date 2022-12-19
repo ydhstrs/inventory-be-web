@@ -23,4 +23,5 @@ class AdminKategorilController extends Controller
         KategoriL::where(['id' => $id])->delete();
         return redirect()->route('kategoril.index')->with('success', 'Data berhasil dihapus');
     }
+    
 }
