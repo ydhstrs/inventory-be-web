@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminCategoryController;
-use App\Http\Controllers\AdminKategorilController;
+use App\Http\Controllers\AdminKategoriLogistikController;
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\AdminDistribusiController;
 use App\Http\Controllers\AdminDistribusiItemController;
@@ -63,9 +63,9 @@ Route::middleware('auth','admin')->group(function () {
     Route::post('/kategori/{id}', [AdminCategoryController::class, 'delete'])->name('kategori.delete');
     Route::post('/kategori', [AdminCategoryController::class, 'store'])->name('kategori.store');
 
-    Route::get('/kategoril', [AdminKategorilController::class, 'index'])->name('kategoril.index');
-    Route::post('/kategoril/{id}', [AdminKategorilController::class, 'delete'])->name('kategoril.delete');
-    Route::post('/kategoril', [AdminKategorilController::class, 'store'])->name('kategoril.store');
+    Route::get('/kategoril', [AdminKategoriLogistikController::class, 'index'])->name('kategoril.index');
+    Route::post('/kategoril/{id}', [AdminKategoriLogistikController::class, 'delete'])->name('kategoril.delete');
+    Route::post('/kategoril', [AdminKategoriLogistikController::class, 'store'])->name('kategoril.store');
 
         //verif user
     Route::get('users', [\App\Http\Controllers\UserController::class, 'index'])->name('users.index');
