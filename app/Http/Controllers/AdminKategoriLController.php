@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\KategoriL;
 use Illuminate\Http\Request;
 
-class AdminKategoriLController extends Controller
+class AdminKategorilController extends Controller
 {
     public function index(){
         $kategoris = KategoriL::all();
