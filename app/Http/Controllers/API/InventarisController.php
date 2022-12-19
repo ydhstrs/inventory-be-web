@@ -40,6 +40,7 @@ class InventarisController extends Controller
         }
         return ResponseFormatter::success($inventaris, "Success Get Inventaris By Kota");
     }
+    
     public function getInventarisbyKota(Request $request)
     {
     }

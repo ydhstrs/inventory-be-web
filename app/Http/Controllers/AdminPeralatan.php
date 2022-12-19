@@ -45,11 +45,8 @@ class AdminPeralatan extends Controller
 
     public function store(Request $request)
     {
-        if ($request->file('filefoto') != null) {
-            $ttd = $request->file('filefoto')->store('peralatan');
-            $image = asset('storage/' . $ttd);
-
-            $request['foto'] = $image;
+        if ($request->file('filefoto')) {
+            $request['foto'] = $request->file('filefoto')->store('peralatan');
         }
 
         $request['id_kota'] = Auth::user()->id_kota;
@@ -78,11 +75,12 @@ class AdminPeralatan extends Controller
 
     public function update(Request $request)
     {
-        if ($request->file('filefoto') != null) {
-            $ttd = $request->file('filefoto')->store('peralatan');
-            $image = asset('storage/' . $ttd);
 
-            $request['foto'] = $image;
+        if ($request->file('filefoto')) {
+            if ($request->oldImage) {
+                Storage::delete($request->oldImage);
+            }
+            $request['foto'] = $request->file('image')->store('isimateri-images');
         }
 
         Peralatan::where(['id' => $request['id']])->update($request->except('_token', 'baik', 'rusak_ringan', 'rusak_sedang', 'rusak_berat'));
