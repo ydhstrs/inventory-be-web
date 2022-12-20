@@ -1,5 +1,5 @@
 <x-guest-layout>
-    <div class="w-screen h-screen bg-primaryColor flex flex-col items-center justify-center overflow-y-scroll">
+    <div class="w-screen bg-primaryColor flex flex-col items-center justify-center overflow-y-scroll">
 
         <div class="card bg-white shadow-lg rounded-xl my-4">
             <div class="flex flex-wrap items-center gap-10">
@@ -25,8 +25,8 @@
                         <form method="POST" action="{{ route('register') }}">
                             @csrf
 
-                            <span class="text-secondaryColor font-bold text-3xl mb-4 text-center">Register
-                                Account</span>
+                            <span class="text-secondaryColor font-bold text-3xl mb-4 text-center">
+                                Register Account</span>
 
 
                             <!-- Name -->
