@@ -18,10 +18,17 @@ class AdminDashboardController extends Controller
     public function index(ExpensesChart $chart, BPBDChart $BPBDChart, DonutChart $donutChart)
     {
         $id_kota = Auth::user()->id_kota;
-        $peralatan = Peralatan::count();
-        $distribusi = Distribusi::count();
-        $logistik = Logistik::count();
-        $peminjaman = Pinjam::count();
+        if(Auth::user()->role==2){
+            $peralatan = Peralatan::count();
+            $distribusi = Distribusi::count();
+            $logistik = Logistik::count();
+            $peminjaman = Pinjam::count();
+        }else{
+            $peralatan = Peralatan::where('id_kota',$id_kota)->count();
+            $distribusi = Distribusi::where('kota_penerima',$id_kota)->count();
+            $logistik = Logistik::where('id_kota',$id_kota)->count();
+            $peminjaman = Pinjam::where('kota_penerima',$id_kota)->count();   
+        }
         return view('admin.dashboard', [
             'chart' => $chart->build($id_kota),
             'bpbdchart' => $BPBDChart->build(),
