@@ -7,6 +7,7 @@ use App\Http\Controllers\AdminKategoriLogistikController;
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\AdminDistribusiController;
 use App\Http\Controllers\AdminPinjamController;
+use App\Http\Controllers\AdminBannerController;
 use App\Http\Controllers\AdminDistribusiItemController;
 use App\Http\Controllers\AdminPinjamItemController;
 use App\Http\Controllers\AdminLogistikController;
@@ -81,6 +82,10 @@ Route::middleware('auth','admin')->group(function () {
     Route::get('/kategoril', [AdminKategoriLogistikController::class, 'index'])->name('kategoril.index');
     Route::post('/kategoril/{id}', [AdminKategoriLogistikController::class, 'delete'])->name('kategoril.delete');
     Route::post('/kategoril', [AdminKategoriLogistikController::class, 'store'])->name('kategoril.store');
+
+    Route::get('/banner', [AdminBannerController::class, 'index'])->name('banner.index');
+    Route::post('/banner/{id}', [AdminBannerController::class, 'delete'])->name('banner.delete');
+    Route::post('/banner', [AdminBannerController::class, 'store'])->name('banner.store');
 
         //verif user
     Route::get('users', [\App\Http\Controllers\UserController::class, 'index'])->name('users.index');

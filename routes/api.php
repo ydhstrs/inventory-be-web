@@ -19,6 +19,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
     Route::post('laporan', [\App\Http\Controllers\API\LaporanController::class, 'store']);
+    Route::get('banner', [\App\Http\Controllers\API\BannerController::class, 'getBanner']);
 
 Route::group(['middleware'=>['auth:sanctum']],function(){
     Route::post('logout',[AuthController::class,'logout']);
