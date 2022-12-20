@@ -26,8 +26,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', [GuestController::class, 'index'])->name('home');
-Route::get('/', [AuthenticatedSessionController::class, 'create']);
+Route::get('/', [GuestController::class, 'index'])->name('home');
+// Route::get('/', [AuthenticatedSessionController::class, 'create']);
 Route::get('/logistik', [GuestController::class, 'logistikView'])->name('logistik');
 Route::get('/distribusi', [GuestController::class, 'distribusiView'])->name('distribusi');
 Route::get('/regulasi', [GuestController::class, 'regulasiView'])->name('regulasi');
