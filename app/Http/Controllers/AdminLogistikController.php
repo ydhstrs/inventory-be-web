@@ -65,9 +65,8 @@ class AdminLogistikController extends Controller
             'keterangan_logistik' => 'max:255',
         ]);
 
-
         if ($request->file('fotologistik') != null) {
-            $ttd = $request->file('fotologistik')->store("peralatan");
+            $ttd = $request->file('fotologistik')->store('peralatan');
             $image = asset('storage/' . $ttd);
 
             $request['foto_logistik'] = $image;
@@ -109,9 +108,24 @@ class AdminLogistikController extends Controller
      * @param  \App\Models\Logistik  $logistik
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateLogistikRequest $request, Logistik $logistik)
+    public function update(Request $request, Logistik $adminlogistik)
     {
-        //
+        if ($request->file('filefoto') != null) {
+            $ttd = $request->file('filefoto')->store('peralatan');
+            $image = asset('storage/' . $ttd);
+            $request['foto'] = $image;
+        } else {
+            $image = $request->oldfoto;
+        }
+        Logistik::where('id', $adminlogistik->id)->update([
+            'nama_logistik' => $request->nama_logistik,
+            'kategori_logistik' => $request->kategori_logistik,
+            'jumlah_logistik' => $request->jumlah_logistik,
+            'foto_logistik' => $image,
+            'keterangan_logistik' => $request->keterangan_logistik,
+        ]);
+        return redirect('/adminlogistik')->with('success', 'Data Telah Diperbaharui');
+
     }
 
     /**
@@ -132,7 +146,7 @@ class AdminLogistikController extends Controller
     public function export(Request $request)
     {
         $myId = Auth::user()->id_kota;
-        $namaKota = Kota::where('id',  $myId)->get('nama_kota');
+        $namaKota = Kota::where('id', $myId)->get('nama_kota');
         return Excel::download(new LogistikExport($myId, $namaKota), 'logistik.xlsx');
     }
 }

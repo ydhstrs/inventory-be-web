@@ -26,7 +26,7 @@ class DatabaseSeeder extends Seeder
 
         User::create([
             'name' => 'Admin',
-            'id_kota' => 1,
+            'id_kota' => 2,
             'email' => 'admin@gmail.com',
             'nip' => '222012121111134',
             'no_hp' => '082134567890',
@@ -46,6 +46,7 @@ class DatabaseSeeder extends Seeder
         ]);
         User::create([
             'name' => 'Superadmin',
+            'id_kota' => 1,
             'email' => 'superadmin@gmail.com',
             'nip' => '322012121111134',
             'no_hp' => '085334567890',
@@ -55,7 +56,7 @@ class DatabaseSeeder extends Seeder
         ]);
         User::create([
             'name' => 'User',
-            'id_kota' => 1,
+            'id_kota' => 2,
             'email' => 'user@gmail.com',
             'nip' => '122012121111134',
             'no_hp' => '081234567890',
@@ -71,6 +72,11 @@ class DatabaseSeeder extends Seeder
             'no_hp' => '081234567890',
             'role' => '0',
             'password' => bcrypt('admin12345'),
+        ]);
+        Kota::create([
+            'id_zona' => 1,
+            'nama_kota' => 'Sumatera Utara',
+            'kode_kota' => 'SU',
         ]);
         Kota::create([
             'id_zona' => 1,
@@ -191,7 +197,7 @@ class DatabaseSeeder extends Seeder
             'nama_kategori' => 'Alat Sedang',
         ]);
         Category::create([
-            'nama_kategori'=>'Kendaraan'
+            'nama_kategori' => 'Kendaraan',
         ]);
     }
 }

@@ -7,10 +7,10 @@
         @endphp
         <div class="mt-10">
             <div class="block overflow-x-auto p-8 text-dark">
-                <form method="POST" action="/adminlogistik" enctype="multipart/form-data">
+                <form method="POST" action="/adminlogistik/{{ $logistik->id }}" enctype="multipart/form-data">
+                    @method('put')
                     @csrf
                     <div class="mb-6">
-                        <input type="hidden" name="id_kota" value="{{ $idKota }}">
                         <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Nama</label>
                         <input type="text" id="nama_logistik" name="nama_logistik" value="{{ $logistik->nama_logistik }}"
                             class="form-control bg-gray-50 border border-gray-300 text-dark text-sm rounded-lg block w-full p-2.5"
@@ -36,6 +36,7 @@
 
 
                     <div class="mb-6">
+                        <input type="hidden" value="{{ $logistik->foto_logistik }}" name="oldfoto">
                         <label for="filefoto" class="block mb-2 text-sm font-medium text-gray-900">Foto</label>
                         <input type="file" id="filefoto" name="filefoto" value="{{ $logistik->foto_logistik }}"
                             class="form-control bg-gray-50 border border-gray-300 text-dark text-sm rounded-lg block w-full p-2.5"
