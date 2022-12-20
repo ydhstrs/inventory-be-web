@@ -43,6 +43,13 @@
                         placeholder="{{ $logistik->tahun_logistik }}" required>
                 </div>
 
+
+                <div class="mb-6">
+                    <label for="keterangan" class="block mb-2 text-sm font-medium text-gray-900">Sumber Dana</label>
+                    <textarea type="text" id="sumber_dana_logistik" name="sumber_dana_logistik"
+                        class="form-control bg-gray-50 border border-gray-300 text-dark text-sm rounded-lg block w-full p-2.5"
+                        placeholder="" required>{{$logistik->sumber_dana_logistik}}</textarea>
+                </div>
                 <div class="mb-6">
                     <label for="keterangan" class="block mb-2 text-sm font-medium text-gray-900">Keterangan</label>
                     <textarea type="text" disabled id="keterangan" name="keterangan" value="{{ $logistik->keterangan_logistik }}"

@@ -16,6 +16,7 @@ class Logistik extends Model
         'kategori_logistik',
         'jumlah_logistik',
         'keterangan_logistik',
+        'sumber_dana_logistik',
     ];
 
     public function kota(){

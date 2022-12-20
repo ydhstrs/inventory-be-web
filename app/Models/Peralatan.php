@@ -16,6 +16,7 @@ class Peralatan extends Model
         'jumlah',
         'kategori',
         'keterangan',
+        'sumber_dana_peralatan',
     ];
 
     public function kondisiBarang(){

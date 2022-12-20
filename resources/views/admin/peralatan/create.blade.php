@@ -78,7 +78,7 @@
                         <label for="filefoto" class="block mb-2 text-sm font-medium text-gray-900">Foto</label>
                         <input type="file" id="filefoto" name="filefoto"
                             class="form-control bg-gray-50 border border-gray-300 text-dark text-sm rounded-lg block w-full p-2.5"
-                            placeholder="" required>
+                            placeholder="" >
                     </div>
 
                     <div class="mb-6">
@@ -89,7 +89,12 @@
                             class="form-control bg-gray-50 border border-gray-300 text-dark text-sm rounded-lg block w-full p-2.5"
                             placeholder="" required>
                     </div>
-
+                    <div class="mb-6">
+                        <label for="keterangan" class="block mb-2 text-sm font-medium text-gray-900">Sumber Dana</label>
+                        <textarea type="text" id="sumber_dana_peralatan" name="sumber_dana_peralatan"
+                            class="form-control bg-gray-50 border border-gray-300 text-dark text-sm rounded-lg block w-full p-2.5"
+                            placeholder="" required></textarea>
+                    </div>
                     <div class="mb-6">
                         <label for="keterangan" class="block mb-2 text-sm font-medium text-gray-900">Keterangan</label>
                         <textarea type="text" id="keterangan" name="keterangan"

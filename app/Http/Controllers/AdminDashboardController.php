@@ -21,7 +21,7 @@ class AdminDashboardController extends Controller
         return view('admin.dashboard', [
             'chart' => $chart->build($id_kota),
             'bpbdchart' => $BPBDChart->build(),
-            'donutChart' => $donutChart->build(),
+            'donutChart' => $donutChart->build($id_kota),
             'peralatan'=>$peralatan,
             'logistik'=>$logistik,
     ]);

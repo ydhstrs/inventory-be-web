@@ -70,9 +70,9 @@
                 <div class="p-6 bg-white rounded shadow">
                     {!! $chart->container() !!}
                 </div>
-                <div class="p-6 bg-white rounded shadow">
+                {{-- <div class="p-6 bg-white rounded shadow">
                     {!! $bpbdchart->container() !!}
-                </div>
+                </div> --}}
 
             </div>
             {{-- Center chart --}}

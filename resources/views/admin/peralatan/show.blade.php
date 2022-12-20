@@ -88,6 +88,13 @@
                 </div>
 
                 <div class="mb-6">
+                    <label for="keterangan" class="block mb-2 text-sm font-medium text-gray-900">Sumber Dana</label>
+                    <textarea type="text" disabled id="keterangan" name="keterangan" value="{{ $peralatan->sumber_dana_peralatan }}"
+                        class="form-control bg-gray-50 border border-gray-300 text-dark text-sm rounded-lg block w-full p-2.5"
+                        placeholder="" required>{{ $peralatan->sumber_dana_peralatan }}</textarea>
+                </div>
+
+                <div class="mb-6">
                     <label for="keterangan" class="block mb-2 text-sm font-medium text-gray-900">Keterangan</label>
                     <textarea type="text" disabled id="keterangan" name="keterangan" value="{{ $peralatan->keterangan }}"
                         class="form-control bg-gray-50 border border-gray-300 text-dark text-sm rounded-lg block w-full p-2.5"

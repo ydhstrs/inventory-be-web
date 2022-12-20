@@ -2,6 +2,9 @@
 
 namespace App\Charts;
 
+use App\Models\Distribusi;
+use App\Models\Logistik;
+use App\Models\Peralatan;
 use ArielMejiaDev\LarapexCharts\LarapexChart;
 
 class DonutChart
@@ -13,12 +16,25 @@ class DonutChart
         $this->chart = $chart;
     }
 
-    public function build(): \ArielMejiaDev\LarapexCharts\DonutChart
+    public function build($idKota): \ArielMejiaDev\LarapexCharts\DonutChart
     {
+        $peralatan = 0;
+        $logsitik = 0;
+        $distribusi = 0;
+        if($idKota!=null){
+
+            $peralatan = Peralatan::where('id_kota', $idKota)->count();
+            $logsitik = Logistik::where('id_kota', $idKota)->count();
+            $distribusi = Distribusi::where('kota_penerima', $idKota)->count();
+        }else{
+            $peralatan = Peralatan::count();
+            $logsitik = Logistik::count();
+            $distribusi = Distribusi::count(); 
+        }
         return $this->chart->donutChart()
-            ->setTitle('Top 3 scorers of the team.')
-            ->setSubtitle('Season 2021.')
-            ->addData([20, 24, 30])
-            ->setLabels(['Player 7', 'Player 10', 'Player 9']);
+            ->setTitle('Jumlah')
+            ->setSubtitle('Tahun 2021.')
+            ->addData([$peralatan,  $logsitik,  $distribusi])
+            ->setLabels(['Peralatan', 'Logistik', 'Distribusi']);
     }
 }

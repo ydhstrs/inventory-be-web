@@ -8,15 +8,18 @@
         <span class="font-bold text-4xl">Peralatan</span>
 
         <div class="flex flex-wrap gap-4 mt-10">
+            @if (Auth::user()->role!=2)            
             <a href="{{ route('peralatan.addView') }}"
-                class=" p-2 px-4 rounded-lg bg-blue-600 text-white flex gap-2 place-items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                    stroke="currentColor" class="w-6 h-6">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                        d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-                Tambah
-                Peralatan</a>
+            class=" p-2 px-4 rounded-lg bg-blue-600 text-white flex gap-2 place-items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            Tambah
+            Peralatan
+        </a>
+            @endif
             <form method="get" action="{{ route('export.peralatan', $user->id_kota) }}">
                 <button type="submit"
                     class="bg-green-900 text-white py-2 px-6 mx-4 hover:opacity-75 rounded-lg flex gap-2 place-items-center">

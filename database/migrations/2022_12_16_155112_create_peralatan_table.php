@@ -20,6 +20,7 @@ return new class extends Migration
             $table->integer('jumlah')->nullable();
             $table->string('foto')->nullable();
             $table->string('kategori')->nullable();
+            $table->string('sumber_dana_peralatan')->nullable();
             $table->date('tahun')->nullable();
             $table->string('keterangan')->nullable();
             $table->timestamps();

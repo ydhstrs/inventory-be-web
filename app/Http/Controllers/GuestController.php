@@ -12,9 +12,9 @@ class GuestController extends Controller
     public function index(ExpensesChart $chart, BPBDChart $BPBDChart, DonutChart $donutChart)
     {
         return view('guest.home', [
-            'chart' => $chart->build(1),
+            'chart' => $chart->build(null),
             'bpbdchart' => $BPBDChart->build(),
-            'donutChart' => $donutChart->build(),
+            'donutChart' => $donutChart->build(null),
     ]);
     }
 
