@@ -2,46 +2,47 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Distribusi;
+use App\Models\Pinjam;
 use App\Models\Kota;
+use App\Http\Requests\StorePinjamRequest;
+use App\Http\Requests\UpdatePinjamRequest;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
-
-class AdminDistribusiController extends Controller
+class AdminPinjamController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+public function index()
     {
-        $distribubsi = Distribusi::all();
-        return view('admin.distribusi.index', [
+        $distribubsi = Pinjam::all();
+        return view('admin.pinjam.index', [
             'distribusi' => $distribubsi,
         ]);
     }
 
     public function draft()
     {
-        $distribubsi = Distribusi::create([
+        $distribubsi = Pinjam::create([
             'status' => 'draft',
         ]);
 
-        return redirect()->route('distribusi.draftView', $distribubsi->id);
+        return redirect()->route('pinjam.draftView', $distribubsi->id);
     }
 
     public function draftView($id)
     {
-        $distribubsi = Distribusi::where('id', $id)->first();
+        $distribubsi = Pinjam::where('id', $id)->first();
         $kotas = Kota::all();
-        return view('admin.distribusi.action.create', [
+        return view('admin.pinjam.action.create', [
             'distribusi' => $distribubsi,
             'kotas' => $kotas,
         ]);
     }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -55,10 +56,10 @@ class AdminDistribusiController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\StorePinjamRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StorePinjamRequest $request)
     {
         //
     }
@@ -66,14 +67,14 @@ class AdminDistribusiController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Pinjam  $pinjam
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        $distribubsi = Distribusi::where('id', $id)->first();
+        $distribubsi = Pinjam::where('id', $id)->first();
 
-        return view('admin.distribusi.show', [
+        return view('admin.pinjam.show', [
             'distribusi' => $distribubsi,
         ]);
     }
@@ -81,10 +82,10 @@ class AdminDistribusiController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Pinjam  $pinjam
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Pinjam $pinjam)
     {
         //
     }
@@ -92,17 +93,18 @@ class AdminDistribusiController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Http\Requests\UpdatePinjamRequest  $request
+     * @param  \App\Models\Pinjam  $pinjam
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Distribusi $admindistribusi)
+    public function update(Request $request, Pinjam $admindistribusi)
     {
         $validatedData = $request->validate([
             'kota_penerima' => 'required|max:255',
             'status' => 'required|max:255',
-            'tanggal_distribusi' => 'required',
-            'keterangan_distribusi' => '',
+            'tanggal_pinjam' => 'required',
+            'tanggal_balik' => 'required',
+            'keterangan_pinjam' => '',
         ]);
         if ($request->file('file') != null) {
             $ttd = $request->file('file')->store('peralatan');
@@ -113,15 +115,16 @@ class AdminDistribusiController extends Controller
         else{
             $image = $request->file;
         }
-        Distribusi::where('id', $request->id)->update([
+        Pinjam::where('id', $request->id)->update([
             'kota_penerima' => $request->kota_penerima,
-            'tanggal_distribusi' => $request->tanggal_distribusi,
-            'keterangan_distribusi' => $request->keterangan_distribusi,
+            'tanggal_balik' => $request->tanggal_balik,
+            'tanggal_pinjam' => $request->tanggal_pinjam,
+            'keterangan_pinjam' => $request->keterangan_pinjam,
             'file' => $image,
             'status' =>  $request->status,
         ]);
 
-        return redirect('admindistribusi')->with('success', 'Data berhasil diupdate');
+        return redirect('adminpinjam')->with('success', 'Data berhasil diupdate');
     }
 
     /**
@@ -130,13 +133,13 @@ class AdminDistribusiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Distribusi $admindistribusi)
+    public function destroy(Pinjam $adminpinjam)
     {
-        if ($admindistribusi->file) {
-            Storage::delete($admindistribusi->file);
+        if ($adminpinjam->file) {
+            Storage::delete($adminpinjam->file);
         }
-        Distribusi::destroy($admindistribusi->id);
+        Pinjam::destroy($adminpinjam->id);
 
-        return redirect('/admindistribusi')->with('success', 'Data Telah Dihapus');
+        return redirect('/adminpinjam')->with('success', 'Data Telah Dihapus');
     }
 }

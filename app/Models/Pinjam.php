@@ -5,18 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Distribusi extends Model
+class Pinjam extends Model
 {
     use HasFactory;
-    protected $fillable = [
+        protected $fillable = [
         'kota_penerima',
         'file',
-        'keterangan_distribusi',
+        'keterangan_pinjam',
         'status',
-        'tanggal_distribusi',
+        'tanggal_pinjam',
+        'tanggal_balik',
     ];
 
     public function distribusiItem(){
-        return $this->hasMany(DistribusiItem::class,'id_distribusi','id');
+        return $this->hasMany(PinjamItem::class,'id_pinjam','id');
     }
 }

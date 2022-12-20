@@ -4,7 +4,9 @@ use App\Http\Controllers\AdminCategoryController;
 use App\Http\Controllers\AdminKategoriLogistikController;
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\AdminDistribusiController;
+use App\Http\Controllers\AdminPinjamController;
 use App\Http\Controllers\AdminDistribusiItemController;
+use App\Http\Controllers\AdminPinjamItemController;
 use App\Http\Controllers\AdminLogistikController;
 use App\Http\Controllers\AdminPeralatan;
 use App\Http\Controllers\GuestController;
@@ -48,17 +50,27 @@ Route::middleware('auth','admin')->group(function () {
     Route::post('/deletePeralatan/{id}', [AdminPeralatan::class, 'delete'])->name('peralatan.delete');
     Route::post('/updatePeralatan', [AdminPeralatan::class, 'update'])->name('peralatan.update');
 
-
     Route::resource('/adminlogistik', AdminLogistikController::class);
     
     Route::resource('/admindistribusi', AdminDistribusiController::class);
     Route::resource('/admindistribusiItem', AdminDistribusiItemController::class);
     Route::get('/admindistribusiItemView/{id}', [AdminDistribusiItemController::class, 'createView'])->name('distribusiItem.createView');
- 
 
     Route::get('/admindistribusiDraft', [AdminDistribusiController::class, 'draft'])->name('distribusi.draft');
+    Route::put('/admindistribusiDraftView/{id}', [AdminDistribusiController::class, 'update'])->name('distribusi.store');
     Route::get('/admindistribusiDraftView/{id}', [AdminDistribusiController::class, 'draftView'])->name('distribusi.draftView');
+    Route::get('/admindistribusi/{id}', [AdminDistribusiController::class, 'show']);
  
+    
+    Route::resource('/adminpinjam', AdminPinjamController::class);
+    Route::resource('/adminpinjamItem', AdminPinjamItemController::class);
+    Route::get('/adminpinjamItemView/{id}', [AdminPinjamItemController::class, 'createView'])->name('pinjamItem.createView');
+ 
+    Route::get('/adminpinjamDraft', [AdminPinjamController::class, 'draft'])->name('pinjam.draft');
+    Route::put('/adminpinjamDraftView/{id}', [AdminPinjamController::class, 'update'])->name('pinjam.store');
+    Route::get('/adminpinjamDraftView/{id}', [AdminPinjamController::class, 'draftView'])->name('pinjam.draftView');
+    Route::get('/adminpinjam/{id}', [AdminPinjamController::class, 'show']);
+
     Route::get('/kategori', [AdminCategoryController::class, 'index'])->name('kategori.index');
     Route::post('/kategori/{id}', [AdminCategoryController::class, 'delete'])->name('kategori.delete');
     Route::post('/kategori', [AdminCategoryController::class, 'store'])->name('kategori.store');

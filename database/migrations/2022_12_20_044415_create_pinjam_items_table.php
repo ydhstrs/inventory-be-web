@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      *
@@ -13,13 +12,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('distribusis', function (Blueprint $table) {
+        Schema::create('pinjam_items', function (Blueprint $table) {
             $table->id();
-            $table->string('kota_penerima')->nullable();
-            $table->string('file')->nullable();
-            $table->date('tanggal_distribusi')->nullable();
-            $table->string('status')->nullable();
-            $table->string('keterangan_distribusi')->nullable();
+            $table->foreignId('id_pinjam');
+            $table->foreignId('id_peralatan');
+            $table->integer('jumlah');
             $table->timestamps();
         });
     }
@@ -31,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('distribusis');
+        Schema::dropIfExists('pinjam_items');
     }
 };

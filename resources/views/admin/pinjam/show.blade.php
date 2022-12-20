@@ -39,14 +39,14 @@
                             </td>
 
                             <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                {{ $item->logistik->nama_logistik }}
+                                {{ $item->pinjam->nama }}
                             </td>
                             <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                {{ $item->logistik->kategori_logistik }}
+                                {{ $item->pinjam->kategori }}
                             </td>
                             <td
                             class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                            <img src="{{$item->logistik->foto_logistik}}" class="w-20 h-20" />
+                            <img src="{{$item->pinjam->foto}}" class="w-20 h-20" />
                             <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                                 {{ $item->jumlah }}
                             </td>
@@ -104,7 +104,7 @@
                         <label for="keterangan" class="block mb-2 text-sm font-medium text-gray-900">Keterangan</label>
                         <textarea type="text" id="keterangan_distribusi" name="keterangan_distribusi" value=""
                             class="form-control bg-gray-50 border border-gray-300 text-dark text-sm rounded-lg block w-full p-2.5"
-                            placeholder="" required> {{ $distribusi->keterangan_distribusi }}</textarea>
+                            placeholder="" required> {{ $distribusi->keterangan_pinjam }}</textarea>
                     </div>
 
             </div>

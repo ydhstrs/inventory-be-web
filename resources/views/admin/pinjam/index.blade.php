@@ -1,18 +1,18 @@
 <x-app-layout>
     <div class="m-10 bg-white p-10 rounded-lg">
-        <span class="font-bold text-4xl">Distribusi Logistik</span>
+        <span class="font-bold text-4xl">Peminjaman Barang</span>
 
         <div class="mt-10">
 
             <div class="flex flex-row gap-2">
-                <a href="{{ route('distribusi.draft') }}" 
+                <a href="{{ route('pinjam.draft') }}" 
                 class=" p-2 px-4 rounded-lg bg-blue-600 text-white flex gap-2 place-items-center">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="w-6 h-6">
                     <path stroke-linecap="round" stroke-linejoin="round"
                         d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
-                    Tambah Distribusi
+                    Tambah Peminjaman
                 </a>
             </div>
             <div class="overflow-x-auto relative mt-5">
@@ -20,7 +20,7 @@
                     <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
                         <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
                             <div class="overflow-hidden">
-                                <table id="data_table"  class="min-w-full">
+                                <table id="data_table" class="min-w-full">
                                     <thead class="border-b bg-primaryColor rounded-lg text-white">
                                         <tr>
                                             <th scope="col"
@@ -62,11 +62,11 @@
                                                     {{ $item->status }}
                                                 </td>
                                                 <td  class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                {{ $item->keterangan_distribusi }}
+                                                {{ $item->keterangan_pinjam }}
                                                 </td>
                                                 <td
                                                     class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap flex gap-2">
-                                                    <a href="admindistribusiDraftView/{{ $item->id }}">
+                                                    <a href="adminpinjamDraftView/{{ $item->id }}">
                                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                                                             viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
                                                             class="w-10 h-10 bg-primaryColor p-2 rounded text-white">
@@ -74,7 +74,7 @@
                                                                 d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
                                                         </svg>
                                                     </a>
-                                                    <a href="admindistribusi/{{ $item->id }}">
+                                                    <a href="adminpinjam/{{ $item->id }}">
                                                         <svg class="w-10 h-10 bg-greenColor p-2 rounded text-white"
                                                             xmlns="http://www.w3.org/2000/svg" fill="none"
                                                             viewBox="0 0 24 24" stroke-width="1.5"
@@ -84,7 +84,7 @@
                                                         </svg>
 
                                                     </a>
-                                                    <form action="admindistribusi/{{ $item->id }}" method="post">
+                                                    <form action="adminpinjam/{{ $item->id }}" method="post">
                                                         @method('delete')
                                                         @csrf
                                                         <button type="submit"
