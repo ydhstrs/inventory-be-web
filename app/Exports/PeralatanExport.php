@@ -30,41 +30,28 @@ class PeralatanExport implements FromQuery, WithHeadings, WithStyles, ShouldAuto
     }
     public function query()
     {
-        if (!empty($this->from) && !empty($this->to) && !empty($this->id_user)) {
-            $data = Peralatan::whereBetween('spendings.tanggal', [$this->from, $this->to])
-                ->where('books.id_hotel', $this->myId)
-                ->where('books.id_user', $this->id_user)
-                ->selectRaw('books.guestname, books.book_date, books.nota, books.days, books.room, books.price,books.platform_fee2,books.assured_stay,books.tipforstaf,books.upgrade_room,books.travel_protection,books.member_redclub,books.breakfast,books.early_checkin,null as column_1,null as column_2, platforms.platform_name, platforms.platform_fee')
-                ->join('users', 'books.id_user', '=', 'users.id')
-                ->join('platforms', 'books.id_platform', '=', 'platforms.id');
-
-                // ->join('rooms', 'books.id_room', '=', 'rooms.id');
-        } elseif (empty($this->from) && empty($this->to) && !empty($this->id_user)) {
-            $data = Peralatan::where('books.id_hotel', $this->myId)
-                ->where('spendings.id_user', $this->id_user)
-                ->selectRaw('books.guestname, books.book_date, books.nota, books.days, books.room, books.price,books.platform_fee2,books.assured_stay,books.tipforstaf,books.upgrade_room,books.travel_protection,books.member_redclub,books.breakfast,books.early_checkin,null as column_1,null as column_2, platforms.platform_name, platforms.platform_fee')
-                ->join('users', 'books.id_user', '=', 'users.id')
-                ->join('platforms', 'books.id_platform', '=', 'platforms.id');
-
-                // ->join('rooms', 'books.id_room', '=', 'rooms.id');
-        } elseif (!empty($this->from) && !empty($this->to) && empty($this->id_user)) {
-            $data = Peralatan::whereBetween('spendings.tanggal', [$this->from, $this->to])
-                ->where('spendings.id_hotel', $this->myId)
-                ->selectRaw('spendings.name, spendings.tanggal, spendings.jumlah, spendings.keterangan');
-                // ->join('users', 'spendings.id_user', '=', 'users.id')
-                // ->join('platforms', 'books.id_platform', '=', 'platforms.id');
-
-                // ->join('rooms', 'books.id_room', '=', 'rooms.id');
-        } else {
+   
+        if ($this->myId != NULL) {
             $data = Peralatan::where('peralatans.id_kota', $this->myId)
-                ->selectRaw('peralatans.nama, peralatans.kategori, peralatans.jumlah,peralatans.tahun, peralatans.keterangan');
+                ->selectRaw('peralatans.nama, peralatans.kategori, peralatans.jumlah,peralatans.tahun, peralatans.sumber_dana_peralatan, peralatans.keterangan');
         }
+        else{
+            $data = Peralatan::selectRaw('peralatans.nama, peralatans.kategori, peralatans.jumlah,peralatans.tahun, kotas.nama_kota, peralatans.sumber_dana_peralatan, peralatans.keterangan')
+                ->join('kotas', 'peralatans.id_kota', '=', 'kotas.id');
+        
+        }
+
         return $data;
     }
     public function headings(): array
     {
+        if ($this->myId != NULL) {
         $namaKotaa =  $this->namaKota;
-        return [['LOGISTIK ', $namaKotaa],['Nama ', 'Kategori', 'Jumlah', 'Tahun', 'Keterangan']];
+        return [['PERALATAN ', $namaKotaa],['Nama ', 'Kategori', 'Jumlah', 'Tahun','Sumber Dana', 'Keterangan']];
+                }
+        else{
+        return [['PERALATAN '],['Nama ', 'Kategori', 'Jumlah', 'Tahun', 'Kota','Sumber Dana', 'Keterangan']];
+        }
     }
     public function styles(Worksheet $sheet)
     {

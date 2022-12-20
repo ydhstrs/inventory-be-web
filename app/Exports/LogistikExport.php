@@ -30,41 +30,30 @@ class LogistikExport implements FromQuery, WithHeadings, WithStyles, ShouldAutoS
     }
     public function query()
     {
-        if (!empty($this->from) && !empty($this->to) && !empty($this->id_user)) {
-            $data = Logistik::whereBetween('spendings.tanggal', [$this->from, $this->to])
-                ->where('books.id_hotel', $this->myId)
-                ->where('books.id_user', $this->id_user)
-                ->selectRaw('books.guestname, books.book_date, books.nota, books.days, books.room, books.price,books.platform_fee2,books.assured_stay,books.tipforstaf,books.upgrade_room,books.travel_protection,books.member_redclub,books.breakfast,books.early_checkin,null as column_1,null as column_2, platforms.platform_name, platforms.platform_fee')
-                ->join('users', 'books.id_user', '=', 'users.id')
-                ->join('platforms', 'books.id_platform', '=', 'platforms.id');
 
-                // ->join('rooms', 'books.id_room', '=', 'rooms.id');
-        } elseif (empty($this->from) && empty($this->to) && !empty($this->id_user)) {
-            $data = Logistik::where('books.id_hotel', $this->myId)
-                ->where('spendings.id_user', $this->id_user)
-                ->selectRaw('books.guestname, books.book_date, books.nota, books.days, books.room, books.price,books.platform_fee2,books.assured_stay,books.tipforstaf,books.upgrade_room,books.travel_protection,books.member_redclub,books.breakfast,books.early_checkin,null as column_1,null as column_2, platforms.platform_name, platforms.platform_fee')
-                ->join('users', 'books.id_user', '=', 'users.id')
-                ->join('platforms', 'books.id_platform', '=', 'platforms.id');
-
-                // ->join('rooms', 'books.id_room', '=', 'rooms.id');
-        } elseif (!empty($this->from) && !empty($this->to) && empty($this->id_user)) {
-            $data = Logistik::whereBetween('spendings.tanggal', [$this->from, $this->to])
-                ->where('spendings.id_hotel', $this->myId)
-                ->selectRaw('spendings.name, spendings.tanggal, spendings.jumlah, spendings.keterangan');
-                // ->join('users', 'spendings.id_user', '=', 'users.id')
-                // ->join('platforms', 'books.id_platform', '=', 'platforms.id');
-
-                // ->join('rooms', 'books.id_room', '=', 'rooms.id');
-        } else {
+         if ($this->myId != NULL) {
             $data = Logistik::where('logistiks.id_kota', $this->myId)
                 ->selectRaw('logistiks.nama_logistik, logistiks.kategori_logistik, logistiks.jumlah_logistik, logistiks.tahun_logistik,logistiks.keterangan_logistik');
         }
+        else{
+            $data = Logistik::
+                selectRaw('logistiks.nama_logistik, logistiks.kategori_logistik, logistiks.jumlah_logistik, logistiks.tahun_logistik,kotas.nama_kota ,logistiks.keterangan_logistik')
+                ->join('kotas', 'logistiks.id_kota', '=', 'kotas.id');
+        }
+
         return $data;
     }
     public function headings(): array
     {
+         if ($this->myId != NULL) {
         $namaKota =  $this->namaKota;
         return [['LOGISTIK ', $namaKota],['Nama ', 'Kategori', 'Jumlah','Tahun', 'Keterangan']];
+        }
+        else{
+        return [['LOGISTIK'],['Nama ', 'Kategori', 'Jumlah','Tahun','Kota/Kab', 'Keterangan']];
+        }
+
+
     }
     public function styles(Worksheet $sheet)
     {

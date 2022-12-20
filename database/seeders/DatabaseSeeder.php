@@ -46,7 +46,6 @@ class DatabaseSeeder extends Seeder
         ]);
         User::create([
             'name' => 'Superadmin',
-            'id_kota' => 1,
             'email' => 'superadmin@gmail.com',
             'nip' => '322012121111134',
             'no_hp' => '085334567890',
@@ -73,11 +72,11 @@ class DatabaseSeeder extends Seeder
             'role' => '0',
             'password' => bcrypt('admin12345'),
         ]);
-        Kota::create([
-            'id_zona' => 1,
-            'nama_kota' => 'Sumatera Utara',
-            'kode_kota' => 'SU',
-        ]);
+        // Kota::create([
+        //     'id_zona' => 1,
+        //     'nama_kota' => 'Sumatera Utara',
+        //     'kode_kota' => 'SU',
+        // ]);
         Kota::create([
             'id_zona' => 1,
             'nama_kota' => 'Medan',
