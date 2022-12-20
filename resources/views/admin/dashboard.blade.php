@@ -30,7 +30,13 @@
             {{-- Card 3 --}}
             <div class="card bg-softGreenColor p-5 shadow-lg flex flex-col rounded-lg pr-40 pb-20 max-w-sm">
                 <span class="font-bold text-xl sm:text-2xl">Total Distribusi</span>
-                <span class="font-bold text-6xl my-2 text-greenColor">0</span>
+                <span class="font-bold text-6xl my-2 text-greenColor">{{$distribusi}}</span>
+                <span class="font-bold text-lg sm:text-xl text-greenColor">Barang</span>
+            </div>
+            {{-- Card 4 --}}
+            <div class="card bg-softGreenColor p-5 shadow-lg flex flex-col rounded-lg pr-40 pb-20 max-w-sm">
+                <span class="font-bold text-xl sm:text-2xl">Total Peminjaman</span>
+                <span class="font-bold text-6xl my-2 text-greenColor">{{$peminjaman}}</span>
                 <span class="font-bold text-lg sm:text-xl text-greenColor">Barang</span>
             </div>
         </div>
