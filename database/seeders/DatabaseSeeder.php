@@ -72,11 +72,11 @@ class DatabaseSeeder extends Seeder
             'role' => '0',
             'password' => bcrypt('admin12345'),
         ]);
-        Kota::create([
-            'id_zona' => 1,
-            'nama_kota' => 'Sumatera Utara',
-            'kode_kota' => 'SU',
-        ]);
+        // Kota::create([
+        //     'id_zona' => 1,
+        //     'nama_kota' => 'Sumatera Utara',
+        //     'kode_kota' => 'SU',
+        // ]);
         Kota::create([
             'id_zona' => 1,
             'nama_kota' => 'Medan',
