@@ -9,7 +9,7 @@
                     <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
                         <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
                             <div class="overflow-hidden">
-                                <table class="min-w-full">
+                                <table class="min-w-full mt-2" id="data_table">
                                     <thead class="border-b bg-primaryColor rounded-lg text-white">
                                         <tr>
                                             <th scope="col"
@@ -31,6 +31,10 @@
                                             <th scope="col"
                                                 class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
                                                 Kota / Kab
+                                            </th>
+                                            <th scope="col"
+                                                class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                                Role
                                             </th>
                                             <th scope="col"
                                                 class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
@@ -67,6 +71,28 @@
                                                 </td>
                                                 <td
                                                     class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                                    @if ($logistik->role == 1)
+                                                        <form action="{{ route('user.toUser', $logistik->id) }}"
+                                                            method="POST">
+                                                            @csrf
+                                                            @method('POST')
+                                                            <button class="bg-greenColor p-1 rounded-md hover:shadow-xl text-white"
+                                                                onclick="return confirm('Apakah Kamu Yakin Ingin Mengubah Role Admin Menjadi User?') ">
+                                                                Admin
+                                                        </form>
+                                                    @else
+                                                    <form action="{{ route('user.toAdmin', $logistik->id) }}"
+                                                        method="POST">
+                                                        @csrf
+                                                        @method('POST')
+                                                        <button class="bg-secondaryColor p-2 rounded-md hover:shadow-xl text-white"
+                                                            onclick="return confirm('Apakah Kamu Yakin Ingin Mengubah Role User Menjadi Admin?') ">
+                                                            User
+                                                    </form>
+                                                    @endif
+                                                </td>
+                                                <td
+                                                    class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                                                     @if ($logistik->status == 1)
                                                         Terverfikasi
                                                     @else
@@ -83,10 +109,13 @@
                                                             @method('POST')
                                                             <button
                                                                 class="bg-green-400 p-1 rounded-md hover:shadow-xl hover:bg-green-500 font-bold">
-                                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                                                                  </svg>
-                                                                  
+                                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                                    viewBox="0 0 24 24" stroke-width="1.5"
+                                                                    stroke="currentColor" class="w-6 h-6">
+                                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                                        d="M4.5 12.75l6 6 9-13.5" />
+                                                                </svg>
+
                                                             </button>
                                                         </form>
                                                     @else
@@ -96,10 +125,13 @@
                                                             @method('POST')
                                                             <button
                                                                 class="bg-yellow-300 p-1 rounded-md hover:shadow-xl hover:bg-yellow-400 font-bold">
-                                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                                                                  </svg>
-                                                                  
+                                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                                    viewBox="0 0 24 24" stroke-width="1.5"
+                                                                    stroke="currentColor" class="w-6 h-6">
+                                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                                        d="M6 18L18 6M6 6l12 12" />
+                                                                </svg>
+
                                                             </button>
                                                         </form>
                                                     @endif

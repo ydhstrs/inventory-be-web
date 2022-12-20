@@ -9,7 +9,7 @@ class UserController extends Controller
 {
     public function index()
     {
-        $users = User::where("role",0)->paginate();
+        $users = User::where("role",'<=',1)->paginate();
 
         return view('admin.user.index', compact('users'));
     }
@@ -34,5 +34,21 @@ class UserController extends Controller
          User::where('id',$request['id'])->delete();
 
         return redirect('users')->with('status',"Berhasil menghapus user");
+    }
+
+    public function toUser(Request $request){
+        User::where('id',$request['id'])->update([
+            'role'=>0,
+        ]);
+
+        return redirect('users')->with('status',"Berhasil mengubah admin ke user");
+    }
+
+    public function toAdmin(Request $request){
+        User::where('id',$request['id'])->update([
+            'role'=>1,
+        ]);
+
+        return redirect('users')->with('status',"Berhasil mengubah user ke admin");
     }
 }

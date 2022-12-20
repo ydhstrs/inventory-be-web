@@ -87,6 +87,8 @@ Route::middleware('auth','admin')->group(function () {
     Route::post('/user/addToVerif/{id}', [App\Http\Controllers\UserController::class, 'addToVerif'])->name('user.addToVerif');
     Route::post('/user/delToVerif/{id}', [App\Http\Controllers\UserController::class, 'delToVerif'])->name('user.delToVerif');
     Route::post('/user/deleteUser/{id}', [App\Http\Controllers\UserController::class, 'deleteUser'])->name('user.delUser');
+    Route::post('/user/toAdmin/{id}', [App\Http\Controllers\UserController::class, 'toAdmin'])->name('user.toAdmin');
+    Route::post('/user/toUser/{id}', [App\Http\Controllers\UserController::class, 'toUser'])->name('user.toUser');
 
     
     Route::get('/logistik/export/', [AdminLogistikController::class, 'export'])->name('export.logistik');
