@@ -28,6 +28,9 @@ Route::group(['middleware'=>['auth:sanctum']],function(){
     
     Route::get('zona', [\App\Http\Controllers\API\WilayahController::class, 'getZona']);
     Route::get('kota', [\App\Http\Controllers\API\WilayahController::class, 'getKota']);
+
+    Route::get('permintaan', [\App\Http\Controllers\API\PermintaanController::class, 'getAllPermintaan']);
+    Route::post('permintaan', [\App\Http\Controllers\API\PermintaanController::class, 'storePermintaan']);
 });
 
 Route::post('register',[AuthController::class,'register']);
