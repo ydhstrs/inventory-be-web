@@ -22,7 +22,6 @@ class DonutChart
         $logsitik = 0;
         $distribusi = 0;
         if($idKota!=null){
-
             $peralatan = Peralatan::where('id_kota', $idKota)->count();
             $logsitik = Logistik::where('id_kota', $idKota)->count();
             $distribusi = Distribusi::where('kota_penerima', $idKota)->count();
