@@ -5,13 +5,13 @@
         <div class="mt-10">
 
             <div class="flex flex-row gap-2">
-                <a href="{{ route('pinjam.draft') }}" 
-                class=" p-2 px-4 rounded-lg bg-blue-600 text-white flex gap-2 place-items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                    stroke="currentColor" class="w-6 h-6">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                        d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
+                <a href="{{ route('pinjam.draft') }}"
+                    class=" p-2 px-4 rounded-lg bg-blue-600 text-white flex gap-2 place-items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
                     Tambah Peminjaman
                 </a>
             </div>
@@ -52,17 +52,18 @@
                                                     class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                                                     {{ $loop->iteration }}
                                                 </td>
-<td
+                                                <td
                                                     class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                                                     {{ $item->kota_penerima }}
                                                 </td>
-                                    
+
                                                 <td
                                                     class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                                                     {{ $item->status }}
                                                 </td>
-                                                <td  class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                {{ $item->keterangan_pinjam }}
+                                                <td
+                                                    class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                                    {{ $item->keterangan_pinjam }}
                                                 </td>
                                                 <td
                                                     class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap flex gap-2">
