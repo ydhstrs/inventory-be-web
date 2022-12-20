@@ -72,11 +72,11 @@ class DatabaseSeeder extends Seeder
             'role' => '0',
             'password' => bcrypt('admin12345'),
         ]);
-        // Kota::create([
-        //     'id_zona' => 1,
-        //     'nama_kota' => 'Sumatera Utara',
-        //     'kode_kota' => 'SU',
-        // ]);
+        Kota::create([
+            'id_zona' => 1,
+            'nama_kota' => 'Sumatera Utara',
+            'kode_kota' => 'SU',
+        ]);
         Kota::create([
             'id_zona' => 1,
             'nama_kota' => 'Medan',
@@ -88,9 +88,34 @@ class DatabaseSeeder extends Seeder
             'kode_kota' => '1275',
         ]);
         Kota::create([
+            'id_zona' => 1,
+            'nama_kota' => 'Deli Serdang',
+            'kode_kota' => '1207',
+        ]);
+        Kota::create([
+            'id_zona' => 1,
+            'nama_kota' => 'Langkat',
+            'kode_kota' => '1205',
+        ]);
+        Kota::create([
+            'id_zona' => 2,
+            'nama_kota' => 'Simalungun',
+            'kode_kota' => '1208',
+        ]);
+        Kota::create([
             'id_zona' => 2,
             'nama_kota' => 'Tebing Tinggi',
             'kode_kota' => '1276',
+        ]);
+        Kota::create([
+            'id_zona' => 2,
+            'nama_kota' => 'Barubara',
+            'kode_kota' => '1219',
+        ]);
+        Kota::create([
+            'id_zona' => 2,
+            'nama_kota' => 'Serdang Bedagai',
+            'kode_kota' => '1218',
         ]);
         Kota::create([
             'id_zona' => 2,
@@ -105,7 +130,17 @@ class DatabaseSeeder extends Seeder
         Kota::create([
             'id_zona' => 3,
             'nama_kota' => 'Asahan',
-            'kode_kota' => 'M1',
+            'kode_kota' => '1209',
+        ]);
+        Kota::create([
+            'id_zona' => 3,
+            'nama_kota' => 'Labuhan Batu Utara',
+            'kode_kota' => '1223',
+        ]);
+        Kota::create([
+            'id_zona' => 3,
+            'nama_kota' => 'Labuhan Batu',
+            'kode_kota' => '1210',
         ]);
         Kota::create([
             'id_zona' => 4,
@@ -115,6 +150,11 @@ class DatabaseSeeder extends Seeder
         Kota::create([
             'id_zona' => 4,
             'nama_kota' => 'Padang Lawas Utara',
+            'kode_kota' => '1220',
+        ]);
+        Kota::create([
+            'id_zona' => 4,
+            'nama_kota' => 'Padang Lawas',
             'kode_kota' => '1221',
         ]);
         Kota::create([
@@ -127,25 +167,120 @@ class DatabaseSeeder extends Seeder
             'nama_kota' => 'Mandailing Natal',
             'kode_kota' => '1213',
         ]);
+        Kota::create([
+            'id_zona' => 5,
+            'nama_kota' => 'Tapanuli Selatan',
+            'kode_kota' => '1203',
+        ]);
+        Kota::create([
+            'id_zona' => 6,
+            'nama_kota' => 'Sibolga',
+            'kode_kota' => '1273',
+        ]);
+        Kota::create([
+            'id_zona' => 6,
+            'nama_kota' => 'Tapanuli Tengah',
+            'kode_kota' => '1201',
+        ]);
+        Kota::create([
+            'id_zona' => 6,
+            'nama_kota' => 'Tapanuli Utara',
+            'kode_kota' => '1202',
+        ]);
+        Kota::create([
+            'id_zona' => 6,
+            'nama_kota' => 'Toba',
+            'kode_kota' => '1212',
+        ]);
+        Kota::create([
+            'id_zona' => 6,
+            'nama_kota' => 'Humbang Hasundutan',
+            'kode_kota' => '1216',
+        ]);
+        Kota::create([
+            'id_zona' => 7,
+            'nama_kota' => 'Dairi',
+            'kode_kota' => '1211',
+        ]);
+        Kota::create([
+            'id_zona' => 7,
+            'nama_kota' => 'Pakpak Barat',
+            'kode_kota' => '1215',
+        ]);
+        Kota::create([
+            'id_zona' => 7,
+            'nama_kota' => 'Samosir',
+            'kode_kota' => '1217',
+        ]);
+        Kota::create([
+            'id_zona' => 7,
+            'nama_kota' => 'Karo',
+            'kode_kota' => '1206',
+        ]);
+        Kota::create([
+            'id_zona' => 8,
+            'nama_kota' => 'Nias',
+            'kode_kota' => '1204',
+        ]);
+        Kota::create([
+            'id_zona' => 8,
+            'nama_kota' => 'Nias Selatan',
+            'kode_kota' => '1214',
+        ]);
+        Kota::create([
+            'id_zona' => 8,
+            'nama_kota' => 'Nias Barat',
+            'kode_kota' => '1225',
+        ]);
+        Kota::create([
+            'id_zona' => 8,
+            'nama_kota' => 'Nias Utara',
+            'kode_kota' => '1224',
+        ]);
+        Kota::create([
+            'id_zona' => 8,
+            'nama_kota' => 'Gunung Sitoli',
+            'kode_kota' => '1278',
+        ]);
         Zona::create([
+            'id' => 1,
             'nama_zona' => 'Zona I',
             'kode_zona' => 'ZI',
         ]);
         Zona::create([
+            'id' => 2,
             'nama_zona' => 'Zona II',
             'kode_zona' => 'ZII',
         ]);
         Zona::create([
+            'id' => 3,
             'nama_zona' => 'Zona III',
             'kode_zona' => 'ZIII',
         ]);
         Zona::create([
+            'id' => 4,
             'nama_zona' => 'Zona IV',
             'kode_zona' => 'ZIV',
         ]);
         Zona::create([
+            'id' => 5,
             'nama_zona' => 'Zona V',
             'kode_zona' => 'ZV',
+        ]);
+        Zona::create([
+            'id' => 6,
+            'nama_zona' => 'Zona VI',
+            'kode_zona' => 'ZVI',
+        ]);
+        Zona::create([
+            'id' => 7,
+            'nama_zona' => 'Zona VII',
+            'kode_zona' => 'ZVII',
+        ]);
+        Zona::create([
+            'id' => 8,
+            'nama_zona' => 'Zona VII',
+            'kode_zona' => 'ZVIII',
         ]);
         Inventaris::create([
             'nama_inv' => 'Laptop',
