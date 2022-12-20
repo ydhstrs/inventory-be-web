@@ -7,6 +7,7 @@ use App\Models\Logistik;
 use App\Models\Peralatan;
 use App\Models\Pinjam;
 use ArielMejiaDev\LarapexCharts\LarapexChart;
+use Illuminate\Support\Facades\Auth;
 
 class DonutChart
 {
@@ -23,7 +24,7 @@ class DonutChart
         $logsitik = 0;
         $distribusi = 0;
         $peminjaman = 0;
-        if($idKota!=null){
+        if(Auth::user()->role==1){
             $peralatan = Peralatan::where('id_kota', $idKota)->count();
             $logsitik = Logistik::where('id_kota', $idKota)->count();
             $distribusi = Distribusi::where('kota_penerima', $idKota)->count();
@@ -36,7 +37,6 @@ class DonutChart
         }
         return $this->chart->donutChart()
             ->setTitle('Jumlah')
-            ->setSubtitle('Tahun 2021.')
             ->addData([$peralatan,  $logsitik,  $distribusi,$peminjaman])
             ->setLabels(['Peralatan', 'Logistik', 'Distribusi','Peminjaman']);
     }

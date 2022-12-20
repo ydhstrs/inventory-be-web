@@ -25,7 +25,7 @@ class ExpensesChart
         $logistik = array();
         $distribusi = array();
         $peminjaman = array();
-        if ($id_kota==null) {
+        if(Auth::user()->role==2){
             for ($i = 0; $i <= 11; $i++) {
                 $peralatan[$i] = Peralatan::whereMonth('created_at', date('m', strtotime('-' . $i . ' month')))->count();
                 $logistik[$i] = Logistik::whereMonth('created_at', date('m', strtotime('-' . $i . ' month')))->count();
