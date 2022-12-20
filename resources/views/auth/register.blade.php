@@ -1,5 +1,5 @@
 <x-guest-layout>
-    <div class="w-screen bg-primaryColor flex flex-col items-center justify-center overflow-y-scroll">
+    <div class="w-screen h-full bg-primaryColor flex flex-col items-center justify-center overflow-y-scroll">
 
         <div class="card bg-white shadow-lg rounded-xl my-4">
             <div class="flex flex-wrap items-center gap-10">
