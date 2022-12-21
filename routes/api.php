@@ -20,6 +20,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
     Route::post('laporan', [\App\Http\Controllers\API\LaporanController::class, 'store']);
     Route::get('banner', [\App\Http\Controllers\API\BannerController::class, 'getBanner']);
+    Route::get('kota', [\App\Http\Controllers\API\WilayahController::class, 'getKota']);
+    Route::get('zona', [\App\Http\Controllers\API\WilayahController::class, 'getZona']);
 
 Route::group(['middleware'=>['auth:sanctum']],function(){
     Route::post('logout',[AuthController::class,'logout']);
@@ -27,8 +29,6 @@ Route::group(['middleware'=>['auth:sanctum']],function(){
     Route::get('logistiks', [\App\Http\Controllers\API\InventarisController::class, 'getLogistik']);
     Route::get('peralatan', [\App\Http\Controllers\API\InventarisController::class, 'getPeralatan']);
     
-    Route::get('zona', [\App\Http\Controllers\API\WilayahController::class, 'getZona']);
-    Route::get('kota', [\App\Http\Controllers\API\WilayahController::class, 'getKota']);
 
     Route::get('permintaan', [\App\Http\Controllers\API\PermintaanController::class, 'getAllPermintaan']);
     Route::post('permintaan', [\App\Http\Controllers\API\PermintaanController::class, 'storePermintaan']);
