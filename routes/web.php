@@ -12,6 +12,7 @@ use App\Http\Controllers\AdminDistribusiItemController;
 use App\Http\Controllers\AdminPinjamItemController;
 use App\Http\Controllers\AdminLogistikController;
 use App\Http\Controllers\AdminPeralatan;
+use App\Http\Controllers\AdminPermintaanController;
 use App\Http\Controllers\GuestController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -37,14 +38,17 @@ Route::get('/galery', [GuestController::class, 'galeriView'])->name('galeri');
 
 Route::get('/dashboard', function () {
     return view('admin.dashboard');
-})->middleware(['auth','admin', 'verified'])->name('dashboard');
+})->middleware(['auth', 'admin', 'verified'])->name('dashboard');
 
-Route::middleware('auth','admin')->group(function () {
+Route::middleware('auth', 'admin')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
+
+    Route::get('/permintaan', [AdminPermintaanController::class, 'index'])->name('permintaan.index');
+    Route::get('/permintaan/{id}', [AdminPermintaanController::class, 'show'])->name('permintaan.view');
 
     Route::get('/peralatan', [AdminPeralatan::class, 'index'])->name('peralatan.index');
     Route::get('/addPeralatan', [AdminPeralatan::class, 'addView'])->name('peralatan.addView');
@@ -55,7 +59,7 @@ Route::middleware('auth','admin')->group(function () {
     Route::post('/updatePeralatan', [AdminPeralatan::class, 'update'])->name('peralatan.update');
 
     Route::resource('/adminlogistik', AdminLogistikController::class);
-    
+
     Route::resource('/admindistribusi', AdminDistribusiController::class);
     Route::resource('/admindistribusiItem', AdminDistribusiItemController::class);
     Route::get('/admindistribusiItemView/{id}', [AdminDistribusiItemController::class, 'createView'])->name('distribusiItem.createView');
@@ -64,12 +68,12 @@ Route::middleware('auth','admin')->group(function () {
     Route::put('/admindistribusiDraftView/{id}', [AdminDistribusiController::class, 'update'])->name('distribusi.store');
     Route::get('/admindistribusiDraftView/{id}', [AdminDistribusiController::class, 'draftView'])->name('distribusi.draftView');
     Route::get('/admindistribusi/{id}', [AdminDistribusiController::class, 'show']);
- 
-    
+
+
     Route::resource('/adminpinjam', AdminPinjamController::class);
     Route::resource('/adminpinjamItem', AdminPinjamItemController::class);
     Route::get('/adminpinjamItemView/{id}', [AdminPinjamItemController::class, 'createView'])->name('pinjamItem.createView');
- 
+
     Route::get('/adminpinjamDraft', [AdminPinjamController::class, 'draft'])->name('pinjam.draft');
     Route::put('/adminpinjamDraftView/{id}', [AdminPinjamController::class, 'update'])->name('pinjam.store');
     Route::get('/adminpinjamDraftView/{id}', [AdminPinjamController::class, 'draftView'])->name('pinjam.draftView');
@@ -87,7 +91,7 @@ Route::middleware('auth','admin')->group(function () {
     Route::post('/banner/{id}', [AdminBannerController::class, 'delete'])->name('banner.delete');
     Route::post('/banner', [AdminBannerController::class, 'store'])->name('banner.store');
 
-        //verif user
+    //verif user
     Route::get('users', [\App\Http\Controllers\UserController::class, 'index'])->name('users.index');
     Route::post('/user/addToVerif/{id}', [App\Http\Controllers\UserController::class, 'addToVerif'])->name('user.addToVerif');
     Route::post('/user/delToVerif/{id}', [App\Http\Controllers\UserController::class, 'delToVerif'])->name('user.delToVerif');
@@ -95,10 +99,9 @@ Route::middleware('auth','admin')->group(function () {
     Route::post('/user/toAdmin/{id}', [App\Http\Controllers\UserController::class, 'toAdmin'])->name('user.toAdmin');
     Route::post('/user/toUser/{id}', [App\Http\Controllers\UserController::class, 'toUser'])->name('user.toUser');
 
-    
+
     Route::get('/logistik/export/', [AdminLogistikController::class, 'export'])->name('export.logistik');
     Route::get('/peralatan/export/', [AdminPeralatan::class, 'export'])->name('export.peralatan');
-
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

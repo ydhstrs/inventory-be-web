@@ -17,12 +17,18 @@ class Permintaan extends Model
         'jenis_bencana',
     ];
 
-    
+
     protected $casts = [
         'id_user' => 'integer',
     ];
 
-    public function permintaanBarang(){
-        return $this->hasMany(PermintaanBarang::class,'id_permintaan','id');
+
+    public function permintaanBarang()
+    {
+        return $this->hasMany(PermintaanBarang::class, 'id_permintaan', 'id');
+    }
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'id_user', 'id');
     }
 }

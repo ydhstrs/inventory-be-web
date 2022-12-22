@@ -19,4 +19,8 @@ class PermintaanBarang extends Model
         'id_permintaan' => 'integer',
         'jumlah_permintaan_barang' => 'integer',
     ];
+    public function permintaanBarang()
+    {
+        return $this->belongsTo(Permintaan::class, 'id_permintaan', 'id');
+    }
 }
