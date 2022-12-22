@@ -12,9 +12,9 @@ class PermintaanController extends Controller
 {
     public function getAllPermintaan(Request $request)
     {
-        if ($request['id_kota'] != null) {
+        if ($request['id_user'] != null) {
 
-            $permintaan = Permintaan::where('id_kota', $request['id_kota'])->with('permintaanBarang')
+            $permintaan = Permintaan::where('id_user', $request['id_user'])->with('permintaanBarang')
                 ->get();
 
             return ResponseFormatter::success($permintaan, "Success Get Permintaan");
