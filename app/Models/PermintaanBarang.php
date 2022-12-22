@@ -17,5 +17,6 @@ class PermintaanBarang extends Model
 
     protected $casts = [
         'id_permintaan' => 'integer',
+        'jumlah_permintaan_barang' => 'integer',
     ];
 }
