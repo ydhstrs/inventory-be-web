@@ -20,17 +20,27 @@ class AdminLogistikController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $id_kota = Auth::user()->id_kota;
         $logistiks = [];
         if (Auth::user()->role == 2) {
-            $logistiks = Logistik::all();
+            if ($request->id_kota) {
+                $logistiks = Logistik::where('id_kota', $request->id_kota)->latest()->get();
+            } else {
+                $logistiks = Logistik::latest()->get();
+            }
         } else {
-            $logistiks = Logistik::where('id_kota', $id_kota)->get();
+            $logistiks = Logistik::where('id_kota', $id_kota)->latest()->get();
         }
 
-        return view('admin.logistik.index', ['logistiks' => $logistiks]);
+        session()->flashInput($request->input());
+
+
+        return view('admin.logistik.index', [
+            'logistiks' => $logistiks,
+            'kotas' => Kota::all(),
+        ]);
     }
 
     /**
@@ -60,6 +70,7 @@ class AdminLogistikController extends Controller
             'nama_logistik' => 'required|max:255',
             'fotologistik' => 'image|file|max:1024',
             'tahun_logistik' => '',
+            'tahunexp_logistik' => '',
             'kategori_logistik' => 'required|max:255',
             'jumlah_logistik' => 'required|max:11',
             'keterangan_logistik' => 'max:255',
@@ -120,12 +131,14 @@ class AdminLogistikController extends Controller
         Logistik::where('id', $adminlogistik->id)->update([
             'nama_logistik' => $request->nama_logistik,
             'kategori_logistik' => $request->kategori_logistik,
+            'tahun_logistik' => $request->tahun_logistik,
+            'tahunexp_logistik' => $request->tahunexp_logistik,
             'jumlah_logistik' => $request->jumlah_logistik,
+            'satuan_logistik' => $request->satuan_logistik,
             'foto_logistik' => $image,
             'keterangan_logistik' => $request->keterangan_logistik,
         ]);
         return redirect('/adminlogistik')->with('success', 'Data Telah Diperbaharui');
-
     }
 
     /**

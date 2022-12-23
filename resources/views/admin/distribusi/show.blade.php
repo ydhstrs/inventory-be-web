@@ -22,6 +22,9 @@
                             Kategori Logistik
                         </th>
                         <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                            Asal Kota/Kab
+                        </th>
+                        <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
                             Foto
                         </th>
                         <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
@@ -44,9 +47,11 @@
                             <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                                 {{ $item->logistik->kategori_logistik }}
                             </td>
-                            <td
-                            class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                            <img src="{{$item->logistik->foto_logistik}}" class="w-20 h-20" />
+                            <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                {{ $item->logistik->kota->nama_kota }}
+                            </td>
+                            <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                <img src="{{ $item->logistik->foto_logistik }}" class="w-20 h-20" />
                             <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                                 {{ $item->jumlah }}
                             </td>
@@ -76,14 +81,14 @@
         <div class="mt-5">
             <div class="block overflow-x-auto p-8 text-dark">
 
-                    <div class="mb-6">
-                        <input type="hidden" name="id" value="{{ $distribusi->id }}">
-                        <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Kota Penerima</label>
+                <div class="mb-6">
+                    <input type="hidden" name="id" value="{{ $distribusi->id }}">
+                    <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Kota Penerima</label>
                     <input type="text" disabled id="jumlah" name="jumlah"
                         value="{{ $distribusi->kota_penerima }}"
                         class="form-control bg-gray-50 border border-gray-300 text-dark text-sm rounded-lg block w-full p-2.5"
                         placeholder="{{ $distribusi->kota_penerima }}" required>
-                    </div>
+                </div>
 
 
                 <div class="mb-6">
@@ -93,19 +98,20 @@
                     @endif
                 </div>
 
-                    <div class="mb-6">
-                        <label for="tanggal_distribusi" class="block mb-2 text-sm font-medium text-gray-900">Tanggal</label>
-                        <input type="date" id="tanggal_distribusi" name="tanggal_distribusi" value="{{ $distribusi->tanggal_distribusi }}"
-                            class="form-control bg-gray-50 border border-gray-300 text-dark text-sm rounded-lg block w-full p-2.5"
-                            placeholder="" required>
-                    </div>
+                <div class="mb-6">
+                    <label for="tanggal_distribusi" class="block mb-2 text-sm font-medium text-gray-900">Tanggal</label>
+                    <input type="date" id="tanggal_distribusi" name="tanggal_distribusi"
+                        value="{{ $distribusi->tanggal_distribusi }}"
+                        class="form-control bg-gray-50 border border-gray-300 text-dark text-sm rounded-lg block w-full p-2.5"
+                        placeholder="" required>
+                </div>
 
-                    <div class="mb-6">
-                        <label for="keterangan" class="block mb-2 text-sm font-medium text-gray-900">Keterangan</label>
-                        <textarea type="text" id="keterangan_distribusi" name="keterangan_distribusi" value=""
-                            class="form-control bg-gray-50 border border-gray-300 text-dark text-sm rounded-lg block w-full p-2.5"
-                            placeholder="" required> {{ $distribusi->keterangan_distribusi }}</textarea>
-                    </div>
+                <div class="mb-6">
+                    <label for="keterangan" class="block mb-2 text-sm font-medium text-gray-900">Keterangan</label>
+                    <textarea type="text" id="keterangan_distribusi" name="keterangan_distribusi" value=""
+                        class="form-control bg-gray-50 border border-gray-300 text-dark text-sm rounded-lg block w-full p-2.5"
+                        placeholder="" required> {{ $distribusi->keterangan_distribusi }}</textarea>
+                </div>
 
             </div>
 

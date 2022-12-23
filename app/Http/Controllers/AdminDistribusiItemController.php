@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\DistribusiItem;
+use App\Models\Kota;
 use App\Models\Logistik;
 use Illuminate\Http\Request;
 
@@ -27,13 +28,21 @@ class AdminDistribusiItemController extends Controller
     {
     }
 
-    public function createView($id){
+    public function createView(Request $request, $id)
+    {
 
-        $logistik = Logistik::all();
+        if ($request->id_kota) {
+            $logistik = Logistik::where('id_kota', $request->id_kota)->get();
+        } else {
+            $logistik = Logistik::all();
+        }
 
-        return view('admin.distribusi.actionItem.create',[
-            "logistiks"=>$logistik,
-            'idDistribusi'=>$id
+
+
+        return view('admin.distribusi.actionItem.create', [
+            'kotas' => Kota::all(),
+            "logistiks" => $logistik,
+            'idDistribusi' => $id
         ]);
     }
 
@@ -46,12 +55,12 @@ class AdminDistribusiItemController extends Controller
     public function store(Request $request)
     {
         DistribusiItem::create([
-            'id_distribusi'=>$request['idDistribusi'],
-            'id_logistik'=>$request['id_logistik'],
-            'jumlah'=>$request['jumlah'],
+            'id_distribusi' => $request['idDistribusi'],
+            'id_logistik' => $request['id_logistik'],
+            'jumlah' => $request['jumlah'],
         ]);
 
-        return redirect()->route('distribusi.draftView',$request['idDistribusi']);
+        return redirect()->route('distribusi.draftView', $request['idDistribusi']);
     }
 
     /**

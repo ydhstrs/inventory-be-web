@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\PinjamItem;
+use App\Models\Kota;
 use App\Http\Requests\StorePinjamItemRequest;
 use App\Http\Requests\UpdatePinjamItemRequest;
 use App\Models\Peralatan;
@@ -25,13 +26,19 @@ class AdminPinjamItemController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-   public function createView($id){
+    public function createView(Request $request, $id)
+    {
+        if ($request->id_kota) {
+            $logistik = Peralatan::where('id_kota', $request->id_kota)->get();
+        } else {
+            $logistik = Peralatan::all();
+        }
 
-        $logistik = Peralatan::all();
 
-        return view('admin.pinjam.actionItem.create',[
-            "peralatans"=>$logistik,
-            'idPinjam'=>$id
+        return view('admin.pinjam.actionItem.create', [
+            'kotas' => Kota::all(),
+            "peralatans" => $logistik,
+            'idPinjam' => $id
         ]);
     }
 
@@ -44,12 +51,12 @@ class AdminPinjamItemController extends Controller
     public function store(Request $request)
     {
         PinjamItem::create([
-            'id_pinjam'=>$request['idPinjam'],
-            'id_peralatan'=>$request['id_peralatan'],
-            'jumlah'=>$request['jumlah'],
+            'id_pinjam' => $request['idPinjam'],
+            'id_peralatan' => $request['id_peralatan'],
+            'jumlah' => $request['jumlah'],
         ]);
 
-        return redirect()->route('pinjam.draftView',$request['idPinjam']);
+        return redirect()->route('pinjam.draftView', $request['idPinjam']);
     }
     /**
      * Display the specified resource.
@@ -80,7 +87,7 @@ class AdminPinjamItemController extends Controller
      * @param  \App\Models\PinjamItem  $pinjamItem
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdatePinjamItemRequest $request, PinjamItem $pinjamItem)
+    public function update(PinjamItem $pinjamItem)
     {
         //
     }

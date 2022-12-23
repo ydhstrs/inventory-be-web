@@ -11,6 +11,7 @@ use App\Models\Kota;
 use App\Models\Zona;
 use App\Models\Inventaris;
 use App\Models\KategoriL;
+use App\Models\Peralatan;
 use App\Models\Tipe_Inventaris;
 
 class DatabaseSeeder extends Seeder
@@ -332,6 +333,182 @@ class DatabaseSeeder extends Seeder
         ]);
         Category::create([
             'nama_kategori' => 'Kendaraan',
+        ]);
+        Peralatan::create([
+            'id_kota' => 1,
+            'nama' => 'Mobil',
+            'jumlah' => 1,
+            'kategori' => 'Kendaraan',
+            'sumber_dana_peralatan' => 'asasa',
+            'tahun' => '2020-10-10',
+        ]);
+        Peralatan::create([
+            'id_kota' => 1,
+            'nama' => 'Mobil',
+            'jumlah' => 1,
+            'kategori' => 'Kendaraan',
+            'sumber_dana_peralatan' => 'asasa',
+            'tahun' => '2020-10-10',
+        ]);
+        Peralatan::create([
+            'id_kota' => 1,
+            'nama' => 'Mobil',
+            'jumlah' => 1,
+            'kategori' => 'Kendaraan',
+            'sumber_dana_peralatan' => 'asasa',
+            'tahun' => '2020-10-10',
+        ]);
+        Peralatan::create([
+            'id_kota' => 1,
+            'nama' => 'Mobil',
+            'jumlah' => 1,
+            'kategori' => 'Kendaraan',
+            'sumber_dana_peralatan' => 'asasa',
+            'tahun' => '2020-10-10',
+        ]);
+        Peralatan::create([
+            'id_kota' => 1,
+            'nama' => 'Mobil',
+            'jumlah' => 1,
+            'kategori' => 'Kendaraan',
+            'sumber_dana_peralatan' => 'asasa',
+            'tahun' => '2020-10-10',
+        ]);
+        Peralatan::create([
+            'id_kota' => 1,
+            'nama' => 'Mobil',
+            'jumlah' => 1,
+            'kategori' => 'Kendaraan',
+            'sumber_dana_peralatan' => 'asasa',
+            'tahun' => '2020-10-10',
+        ]);
+        Peralatan::create([
+            'id_kota' => 1,
+            'nama' => 'Mobil',
+            'jumlah' => 1,
+            'kategori' => 'Kendaraan',
+            'sumber_dana_peralatan' => 'asasa',
+            'tahun' => '2020-10-10',
+        ]);
+        Peralatan::create([
+            'id_kota' => 1,
+            'nama' => 'Mobil',
+            'jumlah' => 1,
+            'kategori' => 'Kendaraan',
+            'sumber_dana_peralatan' => 'asasa',
+            'tahun' => '2020-10-10',
+        ]);
+        Peralatan::create([
+            'id_kota' => 1,
+            'nama' => 'Mobil',
+            'jumlah' => 1,
+            'kategori' => 'Kendaraan',
+            'sumber_dana_peralatan' => 'asasa',
+            'tahun' => '2020-10-10',
+        ]);
+        Peralatan::create([
+            'id_kota' => 1,
+            'nama' => 'Mobil',
+            'jumlah' => 1,
+            'kategori' => 'Kendaraan',
+            'sumber_dana_peralatan' => 'asasa',
+            'tahun' => '2020-10-10',
+        ]);
+        Peralatan::create([
+            'id_kota' => 1,
+            'nama' => 'Mobil',
+            'jumlah' => 1,
+            'kategori' => 'Kendaraan',
+            'sumber_dana_peralatan' => 'asasa',
+            'tahun' => '2020-10-10',
+        ]);
+        Peralatan::create([
+            'id_kota' => 1,
+            'nama' => 'Mobil',
+            'jumlah' => 1,
+            'kategori' => 'Kendaraan',
+            'sumber_dana_peralatan' => 'asasa',
+            'tahun' => '2020-10-10',
+        ]);
+        Peralatan::create([
+            'id_kota' => 1,
+            'nama' => 'Mobil',
+            'jumlah' => 1,
+            'kategori' => 'Kendaraan',
+            'sumber_dana_peralatan' => 'asasa',
+            'tahun' => '2020-10-10',
+        ]);
+        Peralatan::create([
+            'id_kota' => 1,
+            'nama' => 'Mobil',
+            'jumlah' => 1,
+            'kategori' => 'Kendaraan',
+            'sumber_dana_peralatan' => 'asasa',
+            'tahun' => '2020-10-10',
+        ]);
+        Peralatan::create([
+            'id_kota' => 1,
+            'nama' => 'Mobil',
+            'jumlah' => 1,
+            'kategori' => 'Kendaraan',
+            'sumber_dana_peralatan' => 'asasa',
+            'tahun' => '2020-10-10',
+        ]);
+        Peralatan::create([
+            'id_kota' => 2,
+            'nama' => 'Mobil',
+            'jumlah' => 1,
+            'kategori' => 'Kendaraan',
+            'sumber_dana_peralatan' => 'asasa',
+            'tahun' => '2020-10-10',
+        ]);
+        Peralatan::create([
+            'id_kota' => 2,
+            'nama' => 'Mobil',
+            'jumlah' => 1,
+            'kategori' => 'Kendaraan',
+            'sumber_dana_peralatan' => 'asasa',
+            'tahun' => '2020-10-10',
+        ]);
+        Peralatan::create([
+            'id_kota' => 2,
+            'nama' => 'Mobil',
+            'jumlah' => 1,
+            'kategori' => 'Kendaraan',
+            'sumber_dana_peralatan' => 'asasa',
+            'tahun' => '2020-10-10',
+        ]);
+        Peralatan::create([
+            'id_kota' => 2,
+            'nama' => 'Mobil',
+            'jumlah' => 1,
+            'kategori' => 'Kendaraan',
+            'sumber_dana_peralatan' => 'asasa',
+            'tahun' => '2020-10-10',
+        ]);
+        Peralatan::create([
+            'id_kota' => 2,
+            'nama' => 'Mobil',
+            'jumlah' => 1,
+            'kategori' => 'Kendaraan',
+            'sumber_dana_peralatan' => 'asasa',
+            'tahun' => '2020-10-10',
+        ]);
+        Peralatan::create([
+            'id_kota' => 2,
+            'nama' => 'Mobil',
+            'jumlah' => 1,
+            'kategori' => 'Kendaraan',
+            'sumber_dana_peralatan' => 'asasa',
+            'tahun' => '2020-10-10',
+        ]);
+        Peralatan::create([
+            'id_kota' => 2,
+            'nama' => 'Mobil',
+            'jumlah' => 1,
+            'kategori' => 'Kendaraan',
+            'sumber_dana_peralatan' => 'asasa',
+            'tahun' => '2020-10-10',
         ]);
     }
 }

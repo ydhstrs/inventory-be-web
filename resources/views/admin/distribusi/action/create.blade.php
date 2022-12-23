@@ -6,7 +6,6 @@
             $idKota = Auth::user()->id_kota;
         @endphp
 
-
         <div class="flex flex-row gap-2 mt-10 ml-10">
 
             <a href="{{ route('distribusiItem.createView', $distribusi->id) }}"
@@ -30,13 +29,13 @@
                             Kategori
                         </th>
                         <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                            Asal Kota/Kab
+                        </th>
+                        <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
                             Foto
                         </th>
                         <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
                             Jumlah
-                        </th>
-                        <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                            Aksi
                         </th>
 
                     </tr>
@@ -53,6 +52,9 @@
                             </td>
                             <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                                 {{ $item->logistik->kategori_logistik }}
+                            </td>
+                            <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                {{ $item->logistik->kota->nama_kota }}
                             </td>
                             <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                                 <img src="{{ $item->logistik->foto_logistik }}" class="w-20 h-20" />
@@ -106,7 +108,7 @@
                     <div class="mb-6">
                         <input type="hidden" value="{{ $distribusi->file }}" name="file">
                         <label for="filefoto" class="block mb-2 text-sm font-medium text-gray-900">Foto</label>
-                        <input type="file" id="file" name="file" 
+                        <input type="file" id="file" name="file"
                             class="form-control bg-gray-50 border border-gray-300 text-dark text-sm rounded-lg block w-full p-2.5"
                             placeholder="">
                     </div>
@@ -114,7 +116,8 @@
                     <div class="mb-6">
                         <label for="tanggal_distribusi"
                             class="block mb-2 text-sm font-medium text-gray-900">Tanggal</label>
-                        <input type="date" id="tanggal_distribusi" name="tanggal_distribusi" value="{{ $distribusi->tanggal_distribusi }}"
+                        <input type="date" id="tanggal_distribusi" name="tanggal_distribusi"
+                            value="{{ $distribusi->tanggal_distribusi }}"
                             class="form-control bg-gray-50 border border-gray-300 text-dark text-sm rounded-lg block w-full p-2.5"
                             placeholder="" required>
                     </div>
@@ -127,8 +130,8 @@
                             <option value="draft">
                                 Draft
                             </option>
-                            <option value="Menuju Lokasi Penerima">
-                                Menuju Lokasi Penerima
+                            <option value="Sedang Digunakan">
+                                Sedang Digunakan
                             </option>
                             <option value="Selesai">
                                 Selesai
@@ -137,12 +140,13 @@
                     </div>
                     <div class="mb-6">
                         <label for="keterangan" class="block mb-2 text-sm font-medium text-gray-900">Keterangan</label>
-                        <textarea type="text" id="keterangan_distribusi" name="keterangan_distribusi" value="{{ $distribusi->keterangan_distribusi }}"
+                        <textarea type="text" id="keterangan_distribusi" name="keterangan_distribusi"
+                            value="{{ $distribusi->keterangan_distribusi }}"
                             class="form-control bg-gray-50 border border-gray-300 text-dark text-sm rounded-lg block w-full p-2.5"
                             placeholder="" required> {{ $distribusi->keterangan_distribusi }}</textarea>
                     </div>
                     <button type="submit"
-                        class="text-white bg-blue hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
+                        class="text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
                 </form>
             </div>
 

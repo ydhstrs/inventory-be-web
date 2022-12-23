@@ -16,9 +16,10 @@
                 </div>
                 <div class="mb-6">
                     <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Kategori</label>
-                    <input type="text" disabled id="nama" name="nama" value="{{ $logistik->kategori_logistik }}"
+                    <input type="text" disabled id="nama" name="nama"
+                        value="{{ $logistik->kategori_logistik }}"
                         class="form-control bg-gray-50 border border-gray-300 text-dark text-sm rounded-lg block w-full p-2.5"
-                         required>
+                        required>
                 </div>
                 <div class="mb-6">
                     <label for="jumlah" class="block mb-2 text-sm font-medium text-gray-900">Jumlah</label>
@@ -27,7 +28,13 @@
                         class="form-control bg-gray-50 border border-gray-300 text-dark text-sm rounded-lg block w-full p-2.5"
                         placeholder="{{ $logistik->jumlah_logistik }}" required>
                 </div>
-
+                <div class="mb-6">
+                    <label for="tahun" class="block mb-2 text-sm font-medium text-gray-900">Satuan</label>
+                    <input type="text" disabled id="satuan_logistik" name="satuan_logistik"
+                        value="{{ $logistik->satuan_logistik }}"
+                        class="form-control bg-gray-50 border border-gray-300 text-dark text-sm rounded-lg block w-full p-2.5"
+                        required>
+                </div>
 
                 <div class="mb-6">
                     <label for="filefoto" class="block mb-2 text-sm font-medium text-gray-900">Foto</label>
@@ -42,13 +49,22 @@
                         class="form-control bg-gray-50 border border-gray-300 text-dark text-sm rounded-lg block w-full p-2.5"
                         placeholder="{{ $logistik->tahun_logistik }}" required>
                 </div>
+                <div class="mb-6">
+                    <label for="tahun" class="block mb-2 text-sm font-medium text-gray-900">Tanggal Expired</label>
+                    <input type="date" disabled id="tahun" name="tahun"
+                        value="{{ $logistik->tahunexp_logistik }}"
+                        class="form-control bg-gray-50 border border-gray-300 text-dark text-sm rounded-lg block w-full p-2.5"
+                        required>
+                </div>
+
+
 
 
                 <div class="mb-6">
                     <label for="keterangan" class="block mb-2 text-sm font-medium text-gray-900">Sumber Dana</label>
                     <textarea type="text" id="sumber_dana_logistik" name="sumber_dana_logistik"
                         class="form-control bg-gray-50 border border-gray-300 text-dark text-sm rounded-lg block w-full p-2.5"
-                        placeholder="" required>{{$logistik->sumber_dana_logistik}}</textarea>
+                        placeholder="" required>{{ $logistik->sumber_dana_logistik }}</textarea>
                 </div>
                 <div class="mb-6">
                     <label for="keterangan" class="block mb-2 text-sm font-medium text-gray-900">Keterangan</label>

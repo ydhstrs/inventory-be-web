@@ -16,9 +16,9 @@ class AdminPinjamController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-public function index()
+    public function index()
     {
-        $distribubsi = Pinjam::all();
+        $distribubsi = Pinjam::latest()->get();
         return view('admin.pinjam.index', [
             'distribusi' => $distribubsi,
         ]);
@@ -59,7 +59,7 @@ public function index()
      * @param  \App\Http\Requests\StorePinjamRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StorePinjamRequest $request)
+    public function store()
     {
         //
     }
@@ -111,8 +111,7 @@ public function index()
             $image = asset('storage/' . $ttd);
 
             $request['file'] = $image;
-        }
-        else{
+        } else {
             $image = $request->file;
         }
         Pinjam::where('id', $request->id)->update([

@@ -19,7 +19,7 @@ class AdminPermintaanController extends Controller
      */
     public function index()
     {
-        $permintaan = Permintaan::all();
+        $permintaan = Permintaan::latest()->get();
         return view('admin.permintaan.index', [
             'permintaans' => $permintaan,
         ]);

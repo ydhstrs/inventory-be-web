@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Exports\PeralatanExport;
 use App\Models\Category;
 use App\Models\Kota;
-use App\Models\Inventaris;
 use App\Models\Kondisi;
 use App\Models\Peralatan;
 use Illuminate\Http\Request;
@@ -16,16 +15,25 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class AdminPeralatan extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $peralatans = [];
         if (Auth::user()->role == 2) {
-            $peralatans = Peralatan::all();
+            if ($request->id_kota) {
+                $peralatans = Peralatan::where('id_kota', $request->id_kota)->latest()->get();
+            } else {
+                $peralatans = Peralatan::latest()->get();
+            }
         } else {
             $id_kota = Auth::user()->id_kota;
-            $peralatans = Peralatan::where('id_kota', $id_kota)->get();
+            $peralatans = Peralatan::where('id_kota', $id_kota)->latest()->get();
         }
-        return view('admin.peralatan.index', ['peralatans' => $peralatans]);
+        session()->flashInput($request->input());
+
+        return view('admin.peralatan.index', [
+            'peralatans' => $peralatans,
+            'kotas' => Kota::all(),
+        ]);
     }
 
     public function addView()
