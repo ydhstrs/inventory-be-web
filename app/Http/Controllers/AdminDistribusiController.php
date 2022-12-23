@@ -7,6 +7,8 @@ use App\Models\Kota;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\DistribusiExport;
 
 
 class AdminDistribusiController extends Controller
@@ -109,8 +111,7 @@ class AdminDistribusiController extends Controller
             $image = asset('storage/' . $ttd);
 
             $request['file'] = $image;
-        }
-        else{
+        } else {
             $image = $request->file;
         }
         Distribusi::where('id', $request->id)->update([
@@ -138,5 +139,9 @@ class AdminDistribusiController extends Controller
         Distribusi::destroy($admindistribusi->id);
 
         return redirect('/admindistribusi')->with('success', 'Data Telah Dihapus');
+    }
+    public function export(Request $request)
+    {
+        return Excel::download(new DistribusiExport(), 'distribusi.xlsx');
     }
 }

@@ -102,6 +102,8 @@ Route::middleware('auth', 'admin')->group(function () {
 
     Route::get('/logistik/export/', [AdminLogistikController::class, 'export'])->name('export.logistik');
     Route::get('/peralatan/export/', [AdminPeralatan::class, 'export'])->name('export.peralatan');
+    Route::get('/pinjam/export/', [AdminPinjamController::class, 'export'])->name('export.pinjam');
+    Route::get('/distribusi/export/', [AdminDistribusiController::class, 'export'])->name('export.distribusi');
 });
 
 require __DIR__ . '/auth.php';

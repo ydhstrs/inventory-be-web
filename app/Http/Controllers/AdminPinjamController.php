@@ -8,6 +8,9 @@ use App\Http\Requests\StorePinjamRequest;
 use App\Http\Requests\UpdatePinjamRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\PinjamExport;
 
 class AdminPinjamController extends Controller
 {
@@ -140,5 +143,9 @@ class AdminPinjamController extends Controller
         Pinjam::destroy($adminpinjam->id);
 
         return redirect('/adminpinjam')->with('success', 'Data Telah Dihapus');
+    }
+    public function export(Request $request)
+    {
+        return Excel::download(new PinjamExport(), 'peminjaman.xlsx');
     }
 }
