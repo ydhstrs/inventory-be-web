@@ -7,7 +7,7 @@
         </span>     
         @else
         <span class="font-bold text-3xl sm:text-5xl text-center">
-            SISTEM INFORMASI PERALATAN DAN LOGISTIK BPBD {{Auth::user()->kota->nama_kota}}
+            SISTEM INFORMASI PERALATAN DAN LOGISTIK BPBD {{strtoupper(Auth::user()->kota->nama_kota)}}
         </span>            
         @endif
 
