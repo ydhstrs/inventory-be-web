@@ -3,11 +3,11 @@
       
         @if (Auth::user()->role==2)
         <span class="font-bold text-3xl sm:text-5xl text-center">
-            Statistik Inventaris dan Logistik Provinsi Sumatera Utara
+            SISTEM INFORMASI PERALATAN DAN LOGISTIK BPBD PROVINSI SUMATERA UTARA
         </span>     
         @else
         <span class="font-bold text-3xl sm:text-5xl text-center">
-            Statistik Inventaris dan Logistik <br> {{Auth::user()->kota->nama_kota}}
+            SISTEM INFORMASI PERALATAN DAN LOGISTIK BPBD {{Auth::user()->kota->nama_kota}}
         </span>            
         @endif
 
