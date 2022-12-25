@@ -68,6 +68,8 @@ Route::middleware('auth', 'admin')->group(function () {
     Route::put('/admindistribusiDraftView/{id}', [AdminDistribusiController::class, 'update'])->name('distribusi.store');
     Route::get('/admindistribusiDraftView/{id}', [AdminDistribusiController::class, 'draftView'])->name('distribusi.draftView');
     Route::get('/admindistribusi/{id}', [AdminDistribusiController::class, 'show']);
+    Route::post('/admindistribusiDraft/addToVerif/{id}', [App\Http\Controllers\AdminDistribusiController::class, 'addToVerif'])->name('distribusi.addToVerif');
+    Route::post('/admindistribusiDraft/delToVerif/{id}', [App\Http\Controllers\AdminDistribusiController::class, 'delToVerif'])->name('distribusi.delToVerif');
 
 
     Route::resource('/adminpinjam', AdminPinjamController::class);

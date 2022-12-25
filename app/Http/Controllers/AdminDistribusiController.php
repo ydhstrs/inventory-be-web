@@ -9,7 +9,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\DistribusiExport;
-
+use App\Models\DistribusiItem;
+use App\Models\Logistik;
 
 class AdminDistribusiController extends Controller
 {
@@ -53,7 +54,36 @@ class AdminDistribusiController extends Controller
     {
         //
     }
+    public function addToVerif(Request $request, $id)
+    {
+        $distribubsi = Distribusi::where('id', $id)->first();
+        $jumlah =  DistribusiItem::where('id', $request['id'])->sum('jumlah');
+        $logistik =  Logistik::where('id', $request->id_logistik)->sum('jumlah_logistik');
+        $total = $logistik - $jumlah;
+        DistribusiItem::where('id', $request['id'])->update([
+            'status' => 1,
+        ]);
+        Logistik::where('id', $request->id_logistik)->update([
+            'jumlah_logistik' => $total,
+        ]);
+        return redirect()->route('distribusi.draftView', $distribubsi->id);
+    }
 
+    public function delToVerif(Request $request, $id)
+    {
+        $distribubsi = Distribusi::where('id', $id)->first();
+        $jumlah =  DistribusiItem::where('id', $request['id'])->sum('jumlah');
+        $logistik =  Logistik::where('id', $request->id_logistik)->sum('jumlah_logistik');
+        $total = $logistik + $jumlah;
+        DistribusiItem::where('id', $request['id'])->update([
+            'status' => 0,
+        ]);
+        Logistik::where('id', $request->id_logistik)->update([
+            'jumlah_logistik' => $total,
+        ]);
+
+        return redirect()->route('distribusi.draftView', $distribubsi->id);
+    }
     /**
      * Store a newly created resource in storage.
      *

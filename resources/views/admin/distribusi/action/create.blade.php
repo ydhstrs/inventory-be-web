@@ -37,6 +37,12 @@
                         <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
                             Jumlah
                         </th>
+                        <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                            Satuan
+                        </th>
+                        <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                            Aksi
+                        </th>
 
                     </tr>
                 </thead>
@@ -61,22 +67,46 @@
                             <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                                 {{ $item->jumlah }}
                             </td>
-                            <td>
-                                {{-- <form action="{{ route('kategori.delete', $item->id) }}"
-                                method="POST">
-                                @csrf
-                                <button type="submit">
-                                    <svg class="w-10 h-10 bg-pinkColor p-2 rounded text-white"
-                                        xmlns="http://www.w3.org/2000/svg" fill="none"
-                                        viewBox="0 0 24 24" stroke-width="1.5"
-                                        stroke="currentColor" class="w-6 h-6">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                    </svg>
-
-                                </button>
-                            </form> --}}
+                            <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                {{ $item->logistik->satuan_logistik }}
                             </td>
+
+                            <td class="px-6 py-4">
+                                {{-- Role Action --}}
+                                @if ($item->status == 0)
+                                    <form action="{{ route('distribusi.addToVerif', $item->id) }}" method="POST">
+                                        @csrf
+                                        @method('POST')
+                                        <input type="hidden" name="id_logistik" value="{{ $item->id_logistik }}">
+                                        <button
+                                            onclick="return confirm('Aksi ini akan mengurangi stok logistik di gudang asal') "
+                                            class="bg-green-400 p-1 rounded-md hover:shadow-xl hover:bg-green-500 font-bold">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M4.5 12.75l6 6 9-13.5" />
+                                            </svg>
+
+                                        </button>
+                                    </form>
+                                @else
+                                    <form action="{{ route('distribusi.delToVerif', $item->id) }}" method="POST">
+                                        @csrf
+                                        @method('POST')
+                                        <input type="hidden" name="id_logistik" value="{{ $item->id_logistik }}">
+
+                                        <button
+                                            onclick="return confirm('Aksi ini akan menambah stok logistik di gudang asal') "
+                                            class="bg-yellow-300 p-1 rounded-md hover:shadow-xl hover:bg-yellow-400 font-bold">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M6 18L18 6M6 6l12 12" />
+                                            </svg>
+
+                                        </button>
+                                    </form>
+                                @endif
                         </tr>
                     @endforeach
                 </tbody>
@@ -139,7 +169,8 @@
                         </select>
                     </div>
                     <div class="mb-6">
-                        <label for="keterangan" class="block mb-2 text-sm font-medium text-gray-900">Keterangan</label>
+                        <label for="keterangan"
+                            class="block mb-2 text-sm font-medium text-gray-900">Keterangan</label>
                         <textarea type="text" id="keterangan_distribusi" name="keterangan_distribusi"
                             value="{{ $distribusi->keterangan_distribusi }}"
                             class="form-control bg-gray-50 border border-gray-300 text-dark text-sm rounded-lg block w-full p-2.5"

@@ -12,9 +12,11 @@ class DistribusiItem extends Model
         'id_distribusi',
         'id_logistik',
         'jumlah',
+        'status',
     ];
 
-    public function logistik(){
-        return $this->belongsTo(Logistik::class,'id_logistik','id');
+    public function logistik()
+    {
+        return $this->belongsTo(Logistik::class, 'id_logistik', 'id');
     }
 }

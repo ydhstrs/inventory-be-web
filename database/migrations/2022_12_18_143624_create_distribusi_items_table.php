@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignId('id_distribusi');
             $table->foreignId('id_logistik');
             $table->integer('jumlah');
+            $table->integer('status')->default(0);
             $table->timestamps();
         });
     }

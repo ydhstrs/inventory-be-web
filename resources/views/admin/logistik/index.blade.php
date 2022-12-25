@@ -8,7 +8,7 @@
         <span class="font-bold text-4xl">Logistik</span>
 
         <div class="flex flex-wrap mt-10">
-          
+
             @if (Auth::user()->role != 2)
                 <a href="adminlogistik/create"
                     class=" p-2 px-4 rounded-lg bg-blue-600 text-white flex gap-2 place-items-center">
@@ -22,26 +22,28 @@
                 </a>
             @endif
             @if (Auth::user()->role == 2)
-              <form method="GET" action="adminlogistik">
-                <div class="flex items-center">
-                    <div class="relative pl-3">
-                        <select name="id_kota" class="bg-white border border-gray-300 text-gray-900 w-full rounded-md">
-                            <option value=""> Pilih Kota/Kab </option>
-                            @foreach ($kotas as $kota)
-                                <option value="{{ $kota->id }}" @if ($kota->id == old('id_user')) selected @endif>
-                                    {{ $kota->nama_kota }}</option>
-                            @endforeach
-                        </select>
+                <form method="GET" action="adminlogistik">
+                    <div class="flex items-center">
+                        <div class="relative pl-3">
+                            <select name="id_kota"
+                                class="bg-white border border-gray-300 text-gray-900 w-full rounded-md">
+                                <option value=""> Pilih Kota/Kab </option>
+                                @foreach ($kotas as $kota)
+                                    <option value="{{ $kota->id }}"
+                                        @if ($kota->id == old('id_user')) selected @endif>
+                                        {{ $kota->nama_kota }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <button type="submit"
+                            class="bg-blue-900 text-white py-2 px-6 mx-4 hover:opacity-75 rounded-lg flex gap-2 place-items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+                            </svg>Filter</button>
                     </div>
-                    <button type="submit"
-                        class="bg-blue-900 text-white py-2 px-6 mx-4 hover:opacity-75 rounded-lg flex gap-2 place-items-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                            stroke="currentColor" class="w-5 h-5">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
-                        </svg>Filter</button>
-                </div>
-            </form>
+                </form>
             @endif
 
             <form method="get" action="{{ route('export.logistik', $user->id_kota) }}">
@@ -141,8 +143,8 @@
                                                         onclick="return confirm('Apakah Kamu Yakin Ingin Menghapus?') ">
                                                         <svg class="w-10 h-10 bg-pinkColor p-2 rounded text-white"
                                                             xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                            viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                                                            class="w-6 h-6">
+                                                            viewBox="0 0 24 24" stroke-width="1.5"
+                                                            stroke="currentColor" class="w-6 h-6">
                                                             <path stroke-linecap="round" stroke-linejoin="round"
                                                                 d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                                         </svg>
